@@ -78,11 +78,45 @@ def scrape_product(page, url):
     return info
 
 
+def slugify(text):
+    return re.sub(r"[^A-Za-z0-9]+", "_", text).strip("_")
+
+
+def download_from_hits(ctx, hits, out, delay):
+    """Download each hit's download_link; resumable. Uses the browser session to pass Cloudflare."""
+    step_dir = out / "step"
+    step_dir.mkdir(exist_ok=True)
+    catalog = []
+    for i, h in enumerate(hits, 1):
+        name = slugify(f"{h['slug']}_{h['name']}")
+        entry = {
+            "name": name, "sku": h["slug"], "description": h["name"],
+            "shop_url": h["url"], "step_url": h["download_link"],
+            "price": None, "currency": "USD",
+        }
+        catalog.append(entry)
+        if any(step_dir.glob(f"{name}.*")):
+            continue
+        resp = ctx.request.get(h["download_link"])
+        if not resp.ok:
+            print(f"[{i}/{len(hits)}] FAILED {resp.status} {name}")
+            continue
+        disp = resp.headers.get("content-disposition", "")
+        m = re.search(r'filename="?([^";]+)', disp)
+        ext = Path(m.group(1)).suffix if m else ".zip"
+        (step_dir / f"{name}{ext}").write_bytes(resp.body())
+        print(f"[{i}/{len(hits)}] {name}{ext}")
+        time.sleep(delay)
+    (out / "catalog.json").write_text(json.dumps(catalog, indent=1))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out-dir", default="vex_scrape")
     ap.add_argument("--delay", type=float, default=2.0, help="seconds between requests")
     ap.add_argument("--download-step", action="store_true")
+    ap.add_argument("--from-hits", action="store_true",
+                    help="skip product pages; download download_link from existing hits_raw.json")
     ap.add_argument("--browser", default="chromium", choices=["chromium", "msedge", "chrome"],
                     help="msedge/chrome use the installed browser (no playwright install needed)")
     args = ap.parse_args()
@@ -93,6 +127,13 @@ def main():
         kwargs = {} if args.browser == "chromium" else {"channel": args.browser}
         ctx = p.chromium.launch_persistent_context(str(out / "profile"), headless=False, **kwargs)
         page = ctx.new_page()
+        if args.from_hits:
+            page.goto(SEARCH_URL)  # establishes the Cloudflare session; solve any CAPTCHA here
+            page.wait_for_timeout(5000)
+            hits = json.loads((out / "hits_raw.json").read_text())
+            download_from_hits(ctx, hits, out, args.delay)
+            ctx.close()
+            return
         hits = collect_hits(page, args.delay)
         (out / "hits_raw.json").write_text(json.dumps(hits, indent=1))
         print(f"{len(hits)} CAD hits")
