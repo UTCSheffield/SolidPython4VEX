@@ -13,6 +13,27 @@ class VEXAssembly:
     """Base class for assemblies; subclasses set self.shape."""
 
     shape = None
+    holes = ()
+    _taken = None
+
+    @property
+    def taken(self):
+        if self._taken is None:
+            self._taken = set()
+        return self._taken
+
+    @taken.setter
+    def taken(self, value):
+        self._taken = value
+
+    def hole(self, face, u, v):
+        return next(h for h in self.holes if h.face.name == face and h.u == u and h.v == v)
+
+    def attach(self, hole, other, other_hole, **kwargs):
+        """Join `other` to this assembly at `hole`/`other_hole`, adding fasteners (see joints.attach)."""
+        from .joints import attach
+
+        return attach(self, hole, other, other_hole, **kwargs)
 
     def render(self, path):
         self.shape.save_as_scad(path)

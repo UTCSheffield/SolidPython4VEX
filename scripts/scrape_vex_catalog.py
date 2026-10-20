@@ -20,6 +20,8 @@ SEARCH_URL = (
     "https://www.vexrobotics.com/catalogsearch/result/?q=__empty__&vex_site=cads"
     "&vex_m2_vexroboticsuk_cads%5BrefinementList%5D%5Bproduct_lines%5D%5B0%5D=VEX%20V5"
 )
+# whole assemblies, kits and field elements: not placeable parts
+NOT_PARTS = re.compile(r"Field Perimeter|License Plate|Claw Kit|Clawbot", re.I)
 STEP_LINK = re.compile(r"\.(step|stp|zip)(\?|$)", re.I)
 
 
@@ -82,8 +84,8 @@ def slugify(text):
     return re.sub(r"[^A-Za-z0-9]+", "_", text).strip("_")
 
 
-def download_from_hits(ctx, hits, out, delay):
-    """Download each hit's download_link; resumable. Uses the browser session to pass Cloudflare."""
+def download_from_hits(page, hits, out, delay):
+    """Download each hit's download_link; resumable. Navigates like a click so the browser handles the download."""
     step_dir = out / "step"
     step_dir.mkdir(exist_ok=True)
     catalog = []
@@ -97,14 +99,18 @@ def download_from_hits(ctx, hits, out, delay):
         catalog.append(entry)
         if any(step_dir.glob(f"{name}.*")):
             continue
-        resp = ctx.request.get(h["download_link"])
-        if not resp.ok:
-            print(f"[{i}/{len(hits)}] FAILED {resp.status} {name}")
+        try:
+            with page.expect_download(timeout=60000) as dl:
+                try:
+                    page.goto(h["download_link"])
+                except Exception:
+                    pass  # navigation is aborted when the response is a file download
+            download = dl.value
+        except Exception as e:
+            print(f"[{i}/{len(hits)}] FAILED {name}: {str(e).splitlines()[0]}")
             continue
-        disp = resp.headers.get("content-disposition", "")
-        m = re.search(r'filename="?([^";]+)', disp)
-        ext = Path(m.group(1)).suffix if m else ".zip"
-        (step_dir / f"{name}{ext}").write_bytes(resp.body())
+        ext = Path(download.suggested_filename).suffix or ".zip"
+        download.save_as(step_dir / f"{name}{ext}")
         print(f"[{i}/{len(hits)}] {name}{ext}")
         time.sleep(delay)
     (out / "catalog.json").write_text(json.dumps(catalog, indent=1))
@@ -130,12 +136,14 @@ def main():
         if args.from_hits:
             page.goto(SEARCH_URL)  # establishes the Cloudflare session; solve any CAPTCHA here
             page.wait_for_timeout(5000)
-            hits = json.loads((out / "hits_raw.json").read_text())
-            download_from_hits(ctx, hits, out, args.delay)
+            hits = [h for h in json.loads((out / "hits_raw.json").read_text())
+                    if "VEX V5" in h.get("product_lines", []) and not NOT_PARTS.search(h["name"])]
+            download_from_hits(page, hits, out, args.delay)
             ctx.close()
             return
         hits = collect_hits(page, args.delay)
         (out / "hits_raw.json").write_text(json.dumps(hits, indent=1))
+        hits = [h for h in hits if "VEX V5" in h.get("product_lines", []) and not NOT_PARTS.search(h["name"])]
         print(f"{len(hits)} CAD hits")
 
         catalog = []

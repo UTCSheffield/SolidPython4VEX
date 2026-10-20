@@ -13,6 +13,7 @@ dependencies = ["solidpython2"]
 [project.optional-dependencies]
 convert = ["pythonocc-core"]
 scrape = ["playwright"]
+simplify = ["numpy", "trimesh", "fast-simplification"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
