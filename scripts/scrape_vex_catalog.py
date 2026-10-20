@@ -1,6 +1,6 @@
 """Build parts/catalog.json from the VEX CAD search page. Run locally, not in CI/Codespaces.
 
-    pip install .[scrape] && playwright install chromium
+    pip install .[scrape]  (plus `playwright install chromium`, or use --browser msedge)
     python scripts/scrape_vex_catalog.py --out-dir vex_scrape [--download-step]
 
 Stage 1 loads the search page in a visible browser (solve any CAPTCHA by hand), captures the
@@ -83,12 +83,15 @@ def main():
     ap.add_argument("--out-dir", default="vex_scrape")
     ap.add_argument("--delay", type=float, default=2.0, help="seconds between requests")
     ap.add_argument("--download-step", action="store_true")
+    ap.add_argument("--browser", default="chromium", choices=["chromium", "msedge", "chrome"],
+                    help="msedge/chrome use the installed browser (no playwright install needed)")
     args = ap.parse_args()
     out = Path(args.out_dir)
     out.mkdir(exist_ok=True)
 
     with sync_playwright() as p:
-        ctx = p.chromium.launch_persistent_context(str(out / "profile"), headless=False)
+        kwargs = {} if args.browser == "chromium" else {"channel": args.browser}
+        ctx = p.chromium.launch_persistent_context(str(out / "profile"), headless=False, **kwargs)
         page = ctx.new_page()
         hits = collect_hits(page, args.delay)
         (out / "hits_raw.json").write_text(json.dumps(hits, indent=1))
