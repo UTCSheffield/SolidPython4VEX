@@ -1,4 +1,24 @@
+from pathlib import Path
+
 from examples.test_chassis import build_test_chassis
+
+
+def test_render_writes_relative_retainers_import_paths(tmp_path):
+    output = tmp_path / "build" / "test_chassis.scad"
+    output.parent.mkdir()
+    build_test_chassis().render(output)
+
+    scad = output.read_text()
+    imports = [
+        line.split('file = "')[1].split('"')[0]
+        for line in scad.splitlines()
+        if "276_6483_4_Post_Hex_Nut_Retainer.stl" in line
+    ]
+    assert len(imports) == 4
+    for imported in imports:
+        path = Path(imported)
+        assert not path.is_absolute()
+        assert (output.parent / path).is_file()
 
 
 def test_test_chassis_builds_with_expected_bom():

@@ -1,5 +1,11 @@
 from collections import Counter
 import math
+import os
+from pathlib import Path
+import re
+
+
+_SCAD_IMPORT = re.compile(r'(?P<prefix>\bimport\s*\(\s*file\s*=\s*")(?P<path>[^"]+)(?P<suffix>")')
 
 
 def _walk_parts(node):
@@ -99,7 +105,19 @@ class VEXAssembly:
         return moved
 
     def render(self, path):
-        self.shape.save_as_scad(path)
+        target = Path(path)
+        scad = self.shape.as_scad()
+
+        def relative_import(match):
+            source = Path(match.group("path"))
+            if not source.is_absolute():
+                return match.group(0)
+            if not source.is_file():
+                raise FileNotFoundError(f"SCAD import file does not exist: {source}")
+            relative = os.path.relpath(source, target.parent.resolve()).replace(os.sep, "/")
+            return f'{match.group("prefix")}{relative}{match.group("suffix")}'
+
+        target.write_text(_SCAD_IMPORT.sub(relative_import, scad))
 
     def bom(self):
         """Return [(PartInfo, quantity)] sorted by part name."""

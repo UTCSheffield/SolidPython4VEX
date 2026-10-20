@@ -34,7 +34,8 @@ The example mirrors the left rail to make the right rail and attaches each cross
 90 degrees. The five-hole 2-1-2 joint at each corner uses a four-post nut retainer, one hex nut,
 and one screw. `.lay_flat()` puts the chassis in the XY ground plane with its lowest flange at
 z=0. The 12.5-inch square outside footprint is ready for adding wheels and motors. The script
-writes `build/test_chassis.scad` and prints the BOM.
+writes `build/test_chassis.scad` and prints the BOM. Imported STL assets use paths relative to the
+SCAD file, so keep the repository's `src/solidpython4vex/parts/stl/` directory alongside it.
 
 ```
 python scripts/step_to_stl.py <step_dir> src/solidpython4vex/parts/stl

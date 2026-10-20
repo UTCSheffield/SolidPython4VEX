@@ -20,7 +20,7 @@ def build_test_chassis():
 
 if __name__ == "__main__":
     chassis = build_test_chassis()
-    output = Path("build/test_chassis.scad")
+    output = Path(__file__).resolve().parents[1] / "build" / "test_chassis.scad"
     output.parent.mkdir(parents=True, exist_ok=True)
     chassis.render(output)
     print(f"Wrote {output}")
