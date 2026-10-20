@@ -61,8 +61,11 @@ class Channel(VEXAssembly):
         self.info = part_info(name or "")
         self.kind, self.w, self.h = kind, w, h
         length = holes * PITCH
+        self.hole_count = holes
+        self.length = length
         x0 = -length / 2
         half = prof["outer_width"] / 2
+        self.outer_width = prof["outer_width"]
         line = prof["line"]
         T = self.T
 
@@ -99,16 +102,83 @@ def U_Channel(w, h, holes, name=None):
     return Channel("U", w, h, holes, name)
 
 
+class _CatalogChannel(Channel):
+    kind = ""
+    width = 0
+    height = 0
+    holes_count = 0
+    part_name = ""
+
+    def __init__(self):
+        super().__init__(
+            self.kind, self.width, self.height, self.holes_count, self.part_name
+        )
+
+
+class C_Channel_1x2x1x25_Aluminum(_CatalogChannel):
+    kind, width, height, holes_count = "C", 2, 1, 25
+    part_name = "276_2288_1x2x1x25_Aluminum_C_Channel"
+
+
+class C_Channel_1x2x1x35_Aluminum(_CatalogChannel):
+    kind, width, height, holes_count = "C", 2, 1, 35
+    part_name = "276_2289_1x2x1x35_Aluminum_C_Channel"
+
+
+class C_Channel_1x2x1x35_Steel(_CatalogChannel):
+    kind, width, height, holes_count = "C", 2, 1, 35
+    part_name = "276_2906_1x2x1x35_Steel_C_Channel"
+
+
+class C_Channel_1x3x1x35_Aluminum(_CatalogChannel):
+    kind, width, height, holes_count = "C", 3, 1, 35
+    part_name = "276_4359_1x3x1x35_Aluminum_C_Channel"
+
+
+class C_Channel_1x5x1x25_Aluminum(_CatalogChannel):
+    kind, width, height, holes_count = "C", 5, 1, 25
+    part_name = "276_2290_1x5x1x25_Aluminum_C_Channel"
+
+
+class C_Channel_1x5x1x25_Steel(_CatalogChannel):
+    kind, width, height, holes_count = "C", 5, 1, 25
+    part_name = "275_1138_1x5x1x25_Steel_C_Channel"
+
+
+class C_Channel_1x5x1x35_Aluminum(_CatalogChannel):
+    kind, width, height, holes_count = "C", 5, 1, 35
+    part_name = "276_2298_1x5x1x35_Aluminum_C_Channel"
+
+
+class C_Channel_1x5x1x35_Steel(_CatalogChannel):
+    kind, width, height, holes_count = "C", 5, 1, 35
+    part_name = "275_1139_1x5x1x35_Steel_C_Channel"
+
+
+class U_Channel_2x2x2x20_Aluminum(_CatalogChannel):
+    kind, width, height, holes_count = "U", 2, 2, 20
+    part_name = "276_7285_U_Channel_2x2x2x20"
+
+
 class ChannelFrame(VEXAssembly):
     """A pair of side rails to which front/rear C-channel crosspieces can be attached."""
 
-    def __init__(self, left, right):
+    def __init__(self, left, right=None):
+        self._automatic_spacing = right is None
+        self._crosspiece_spacing = None
+        if right is None:
+            spacing = left.length - left.outer_width
+            right = left.mirror(axis="z", at=-spacing / 2)
         self.left, self.right = left, right
         self.shape = left.shape + right.shape
         self.holes = list(left.holes) + list(right.holes)
 
     def lay_flat(self):
-        """Orient the frame in the XY ground plane, with its lowest flange at z=0."""
+        """Lay the frame on its lowest flange, leaving channel webs facing up.
+
+        For U-channels used as rails, this puts the flat web on top and the open
+        side toward the ground.
+        """
         return self.rotate(axis="x", degrees=90).translate(z=self.left.flange_len)
 
     def attach(self, *args, at=None, angle=90, hardware="individual", **kwargs):
@@ -133,6 +203,18 @@ class ChannelFrame(VEXAssembly):
             raise ValueError("end must be 'front' or 'rear'")
         if hardware not in ("individual", "4-post"):
             raise ValueError("hardware must be 'individual' or '4-post'")
+
+        spacing = crosspiece.length - 2 * PITCH
+        if spacing <= 0:
+            raise ValueError("crosspiece is too short to span the side rails")
+        if self._automatic_spacing:
+            if self._crosspiece_spacing is not None and abs(spacing - self._crosspiece_spacing) > 0.3:
+                raise ValueError("front and rear crosspieces must have matching lengths")
+            if self._crosspiece_spacing is None:
+                self.right = self.left.mirror(axis="z", at=-spacing / 2)
+                self.shape = self.left.shape + self.right.shape
+                self.holes = list(self.left.holes) + list(self.right.holes)
+                self._crosspiece_spacing = spacing
 
         left_holes = {(h.face.name, h.u, h.v): h for h in self.left.holes}
         right_holes = {(h.face.name, h.u, h.v): h for h in self.right.holes}

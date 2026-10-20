@@ -21,6 +21,44 @@ def test_bom_carries_sku():
     assert info.sku == "276-2288" and qty == 1
 
 
+def test_named_channel_types_cover_catalogued_channel_stls():
+    from pathlib import Path
+
+    from solidpython4vex.parts import STL_DIR
+    from solidpython4vex.structure import (
+        C_Channel_1x2x1x25_Aluminum,
+        C_Channel_1x2x1x35_Aluminum,
+        C_Channel_1x2x1x35_Steel,
+        C_Channel_1x3x1x35_Aluminum,
+        C_Channel_1x5x1x25_Aluminum,
+        C_Channel_1x5x1x25_Steel,
+        C_Channel_1x5x1x35_Aluminum,
+        C_Channel_1x5x1x35_Steel,
+        U_Channel_2x2x2x20_Aluminum,
+    )
+
+    channel_types = (
+        C_Channel_1x2x1x25_Aluminum,
+        C_Channel_1x2x1x35_Aluminum,
+        C_Channel_1x2x1x35_Steel,
+        C_Channel_1x3x1x35_Aluminum,
+        C_Channel_1x5x1x25_Aluminum,
+        C_Channel_1x5x1x25_Steel,
+        C_Channel_1x5x1x35_Aluminum,
+        C_Channel_1x5x1x35_Steel,
+        U_Channel_2x2x2x20_Aluminum,
+    )
+    assert len(channel_types) == 9
+
+    for channel_type in channel_types:
+        channel = channel_type()
+        (info, quantity), = channel.bom()
+        assert quantity == 1
+        assert info.sku
+        assert (Path(STL_DIR) / f"{info.name}.stl").is_file()
+        assert channel.length == channel.hole_count * 12.7
+
+
 def test_attach_adds_fasteners_and_aligns_holes():
     name = "276_2288_1x2x1x25_Aluminum_C_Channel"
     a, b = C_Channel(2, 1, 25, name), C_Channel(2, 1, 25, name)

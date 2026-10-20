@@ -1,20 +1,14 @@
 """Build a square, four-channel VEX chassis frame."""
 from pathlib import Path
 
-from solidpython4vex.holes import UNIT
-from solidpython4vex.structure import C_Channel, ChannelFrame
-
-CHANNEL = "276_2288_1x2x1x25_Aluminum_C_Channel"
-CHANNEL_HOLES = 25
-RAIL_SPACING = 46 * UNIT
+from solidpython4vex.structure import C_Channel_1x2x1x35_Aluminum, ChannelFrame, U_Channel_2x2x2x20_Aluminum
 
 
 def build_test_chassis():
-    left = C_Channel(2, 1, CHANNEL_HOLES, CHANNEL)
-    right = left.mirror(axis="z", at=-RAIL_SPACING / 2)
-    frame = ChannelFrame(left, right)
-    frame.attach(C_Channel(2, 1, CHANNEL_HOLES, CHANNEL), at="front", hardware="4-post")
-    frame.attach(C_Channel(2, 1, CHANNEL_HOLES, CHANNEL), at="rear", hardware="4-post")
+    channel = U_Channel_2x2x2x20_Aluminum()
+    frame = ChannelFrame(channel)
+    frame.attach(C_Channel_1x2x1x35_Aluminum(), at="front", hardware="4-post")
+    frame.attach(C_Channel_1x2x1x35_Aluminum(), at="rear", hardware="4-post")
     return frame.lay_flat()
 
 
