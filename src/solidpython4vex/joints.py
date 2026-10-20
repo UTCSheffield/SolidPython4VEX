@@ -9,11 +9,11 @@ import math
 import re
 from collections import namedtuple
 
-from solid2 import cylinder, multmatrix
+from solid2 import cylinder, import_stl, multmatrix
 
 from .assembly import VEXAssembly
 from .holes import columns, mat_mul, mat_vec, transpose, INCH
-from .parts import CATALOG, part_info
+from .parts import CATALOG, PARTS_DIR, part_info
 
 SCREW_D = 0.164 * INCH
 HEAD_D, HEAD_H = 6.3, 2.0
@@ -176,6 +176,28 @@ def _hardware(hole, n, stack, wall_a, length, screw_info, nut, retainer):
         items.append(_place(nut_shape(nut_info, -wall_a / 2), base, n))
     if retainer:
         items.append(_place(_tag(cylinder(d=9, h=1, _fn=6).translate(0, 0, -wall_a / 2 - 1), _by_sku(RETAINER_SKU)), base, n))
+    return items
+
+
+def four_post_hardware(hole):
+    """One screw, one hex nut, and a catalog four-post retainer for a 2-1-2 joint."""
+    stack = 2 * hole.face.thickness
+    length_in, screw_info = choose_screw(stack, NUTS["hex"].thickness)
+    n = hole.normal
+    items = _hardware(
+        hole, n, stack, hole.face.thickness, length_in * INCH, screw_info, "hex", False
+    )
+
+    retainer_info = _by_sku("276-6483")
+    retainer = import_stl(str(PARTS_DIR / "stl" / f"{retainer_info.name}.stl"))
+    retainer.part_info = retainer_info
+    frame = columns(hole.face.u_axis, n, hole.face.v_axis)
+    offset = tuple(
+        p + axis * (-hole.face.thickness / 2 - 3.17)
+        for p, axis in zip(hole.position, n)
+    )
+    matrix = [[*frame[i], offset[i]] for i in range(3)] + [[0, 0, 0, 1]]
+    items.append(multmatrix(matrix)(retainer))
     return items
 
 
