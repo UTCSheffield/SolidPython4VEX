@@ -19,4 +19,4 @@ simplify = ["numpy", "trimesh", "fast-simplification"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-solidpython4vex = ["parts/stl/*.stl", "parts/catalog.json"]
+solidpython4vex = ["parts/stl/*.stl", "parts/catalog.json", "parts/discs.json"]

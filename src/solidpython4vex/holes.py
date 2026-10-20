@@ -6,12 +6,13 @@ Hole positions are integer (u, v) coordinates on a face, in UNIT steps. UNIT is 
 """
 from dataclasses import dataclass
 
-from solid2 import cube
+from solid2 import cube, cylinder
 
 INCH = 25.4
 UNIT = 0.25 * INCH
 PITCH = 2 * UNIT
 SQUARE_HOLE = 0.182 * INCH
+ROUND_HOLE = 4.2  # mounting holes in gears and sprockets
 
 
 def mat_vec(R, v):
@@ -66,9 +67,9 @@ class Face:
 @dataclass(frozen=True)
 class Hole:
     face: Face
-    u: int
-    v: int
-    kind: str = "square"
+    u: float  # integer on channels; gears and sprockets may use fractions of UNIT
+    v: float
+    kind: str = "square"  # or "round"
 
     @property
     def position(self):
@@ -81,8 +82,13 @@ class Hole:
     def transformed(self, R, t):
         return Hole(self.face.transformed(R, t), self.u, self.v, self.kind)
 
-    def cutter(self, depth=10, size=SQUARE_HOLE):
-        """Cube centred on the hole, long along the face normal."""
+    def cutter(self, depth=10, size=None):
+        """Cube (square hole) or cylinder (round hole) centred on the hole, long along the face normal."""
+        if self.kind == "round":
+            axis = max(range(3), key=lambda i: abs(self.normal[i]))
+            rot = {0: (0, 90, 0), 1: (-90, 0, 0), 2: (0, 0, 0)}[axis]
+            return cylinder(d=size or ROUND_HOLE, h=depth, center=True, _fn=24).rotate(rot).translate(self.position)
+        size = size or SQUARE_HOLE
         dims = [size if abs(n) == 0 else depth for n in self.normal]
         return cube(dims, center=True).translate(self.position)
 

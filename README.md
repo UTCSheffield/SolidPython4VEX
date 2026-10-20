@@ -25,6 +25,7 @@ class LightUChassisAssembly(VEXAssembly):
 - `src/solidpython4vex/` - library (`VEXAssembly`, `part()` STL loader)
 - `src/solidpython4vex/holes.py` - integer hole lattice (`UNIT` = 0.25"; holes exist where `u + v` is even, which gives the half-pitch stagger)
 - `src/solidpython4vex/structure.py` - parametric `Angle`, `C_Channel`, `U_Channel` with `.holes` for attachment; checked against the VEX STEP files
+- `src/solidpython4vex/drive.py` - `Disc(name)` for gears and sprockets: decimated STL blank with the real mounting holes (0.5" grid, or polar rings on the old 84T) and bore cut exactly, `.holes` on both faces for `attach`; patterns in `parts/discs.json` from `scripts/extract_disc_holes.py`
 - `src/solidpython4vex/joints.py` - `attach(hole, other, other_hole, ...)` moves a part onto a hole and adds screws/nuts automatically (default nylock; length from the stack thickness; drawn as plain smooth shapes, real SKUs only in the BOM); `fasteners=False` to place hardware yourself
 - `scripts/scrape_vex_catalog.py`, `scripts/download_steps.js` - build `parts/catalog.json` (VEX V5 only: SKU, shop and STEP links)
 - `scripts/step_to_stl.py` - batch STEP to STL converter (`pip install .[convert]`)

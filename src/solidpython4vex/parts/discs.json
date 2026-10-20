@@ -1,0 +1,416 @@
+{
+ "276_2169_001_12T_Gear": {
+  "axis": "z",
+  "thickness": 9.53,
+  "diameter": 14.8,
+  "centre": [
+   -0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [
+   3.25
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_2169_002_36T_Gear": {
+  "axis": "z",
+  "thickness": 9.53,
+  "diameter": 63.69,
+  "centre": [
+   0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [
+   4.0
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_2169_003_60T_Gear": {
+  "axis": "z",
+  "thickness": 9.53,
+  "diameter": 114.47,
+  "centre": [
+   0.0,
+   0.0,
+   -0.0
+  ],
+  "round_bore": [
+   4.0
+  ],
+  "pattern": {
+   "polar": []
+  }
+ },
+ "276_2169_004_84T_Gear": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 90.96,
+  "centre": [
+   0.0,
+   0.0,
+   3.17
+  ],
+  "round_bore": [
+   4.0
+  ],
+  "pattern": {
+   "grid_r2": 5
+  }
+ },
+ "276_2252_003_6T_High_Strength_Sprocket_HS_Bore": {
+  "axis": "z",
+  "thickness": 13.34,
+  "diameter": 24.74,
+  "centre": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_2252_004_12T_High_Strength_Sprocket_HS_Bore": {
+  "axis": "z",
+  "thickness": 13.34,
+  "diameter": 50.0,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_2252_005_18T_High_Strength_Sprocket_HS_Bore": {
+  "axis": "z",
+  "thickness": 13.34,
+  "diameter": 61.51,
+  "centre": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 1
+  }
+ },
+ "276_2252_006_24T_High_Strength_Sprocket_HS_Bore": {
+  "axis": "z",
+  "thickness": 13.34,
+  "diameter": 80.16,
+  "centre": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 4
+  }
+ },
+ "276_3438_84T_High_Strength_Gear": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 90.98,
+  "centre": [
+   0.0,
+   0.0,
+   -0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "polar": [
+    [
+     12.7,
+     4,
+     0.0
+    ],
+    [
+     25.4,
+     8,
+     0.0
+    ],
+    [
+     38.1,
+     12,
+     0.0
+    ]
+   ]
+  }
+ },
+ "276_3876_6T_High_Strength_Sprocket": {
+  "axis": "z",
+  "thickness": 15.88,
+  "diameter": 24.74,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [
+   4.5
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_3877_12T_High_Strength_Sprocket": {
+  "axis": "z",
+  "thickness": 15.88,
+  "diameter": 42.99,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [
+   4.5
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_3878_18T_High_Strength_Sprocket": {
+  "axis": "z",
+  "thickness": 15.88,
+  "diameter": 61.51,
+  "centre": [
+   -0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [
+   4.5
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_3879_24T_High_Strength_Sprocket": {
+  "axis": "z",
+  "thickness": 15.88,
+  "diameter": 80.15,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [
+   4.5
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_5034_36T_High_Strength_Gear": {
+  "axis": "y",
+  "thickness": 12.7,
+  "diameter": 40.08,
+  "centre": [
+   0.0,
+   -0.0,
+   -0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_5035_60T_High_Strength_Gear": {
+  "axis": "y",
+  "thickness": 12.7,
+  "diameter": 65.54,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_7368_12T_Metal_Gear": {
+  "axis": "z",
+  "thickness": 9.53,
+  "diameter": 14.47,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [
+   3.25
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_7572_24T_High_Strength_Gear_v2": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 27.37,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_7573_48T_High_Strength_Gear_v2_8_Pack": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 52.85,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 2
+  }
+ },
+ "276_7574_72T_High_Strength_Gear_v2_6_Pack": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 78.28,
+  "centre": [
+   0.0,
+   0.0,
+   -0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 5
+  }
+ },
+ "276_7747_36T_High_Strength_Gear_v2_8_pack": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 40.13,
+  "centre": [
+   0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 1
+  }
+ },
+ "276_7748_60T_High_Strength_Gear_v2_8_pack": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 65.57,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 4
+  }
+ },
+ "276_7749_84T_High_Strength_Gear_v2_4_pack": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 90.98,
+  "centre": [
+   0.0,
+   0.0,
+   -0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 9
+  }
+ },
+ "276_8030_8T_Sprocket_6P": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 19.64,
+  "centre": [
+   0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [
+   3.91
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_8328_16T_Sprocket_6P": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 35.71,
+  "centre": [
+   -0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_8329_24T_Sprocket_6P": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 51.97,
+  "centre": [
+   0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 1
+  }
+ },
+ "276_8330_32T_Sprocket_6P": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 68.26,
+  "centre": [
+   -0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 2
+  }
+ },
+ "276_8331_40T_Sprocket_6P": {
+  "axis": "z",
+  "thickness": 12.7,
+  "diameter": 84.49,
+  "centre": [
+   -0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 5
+  }
+ }
+}
