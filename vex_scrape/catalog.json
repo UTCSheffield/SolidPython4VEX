@@ -1,0 +1,2486 @@
+[
+ {
+  "name": "Tread_Links",
+  "sku": "",
+  "description": "Tread Links",
+  "shop_url": "https://www.vexrobotics.com/276-6558.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3_Capped_Shaft_228_2500_2226",
+  "sku": "",
+  "description": "3\" Capped Shaft (228-2500-2226)",
+  "shop_url": "https://www.vexrobotics.com/capped-shafts.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Rack_Gear_v2",
+  "sku": "",
+  "description": "Rack Gear v2",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Pneumatic_Hand_Valve",
+  "sku": "",
+  "description": "Pneumatic Hand Valve",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2_Mecanum_Wheels_V2_Left",
+  "sku": "",
+  "description": "2\u201d Mecanum Wheels V2 (Left)",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "VEX_IQ_Optical_Sensor",
+  "sku": "",
+  "description": "VEX IQ Optical Sensor",
+  "shop_url": "https://www.vexrobotics.com/228-7082.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Short_Conveyor_belt_Inserts",
+  "sku": "",
+  "description": "Short Conveyor-belt Inserts",
+  "shop_url": "https://www.vexrobotics.com/276-2214.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x6_Beam",
+  "sku": "",
+  "description": "1x6 Beam",
+  "shop_url": "https://www.vexrobotics.com/228-3519.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3_8_OD_x_8_Click_On_Spacer_0_125",
+  "sku": "",
+  "description": "3/8\" OD x #8 Click-On Spacer, 0.125\"",
+  "shop_url": "https://www.vexrobotics.com/spacers-washers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_Nylock_Nut",
+  "sku": "",
+  "description": "#8-32 Nylock Nut",
+  "shop_url": "https://www.vexrobotics.com/nuts-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "7_2V_Robot_Battery_NiMH_2000mAh",
+  "sku": "",
+  "description": "7.2V Robot Battery NiMH 2000mAh",
+  "shop_url": "https://www.vexrobotics.com/batteries-and-chargers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Limit_Switch",
+  "sku": "",
+  "description": "Limit Switch",
+  "shop_url": "https://www.vexrobotics.com/276-2174.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Rubber_Link",
+  "sku": "",
+  "description": "Rubber Link",
+  "shop_url": "https://www.vexrobotics.com/275-1029.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Air_Flow_Valve_Fitting",
+  "sku": "",
+  "description": "Air Flow Valve Fitting",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Short_Shifter_Shaft_2_65_Ratio_Spread",
+  "sku": "",
+  "description": "Short Shifter Shaft 2.65 Ratio Spread",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "18T_High_Strength_Sprocket_HS_Bore",
+  "sku": "",
+  "description": "18T High Strength Sprocket (HS Bore)",
+  "shop_url": "https://www.vexrobotics.com/hs-sprockets-and-chain.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "30_Degree_Bent_Gusset",
+  "sku": "",
+  "description": "30 Degree Bent Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_5x_Pitch_Standoff",
+  "sku": "",
+  "description": "1.5x Pitch Standoff",
+  "shop_url": "https://www.vexrobotics.com/iq-standoff.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "6x_Pitch_Standoff",
+  "sku": "",
+  "description": "6x Pitch Standoff",
+  "shop_url": "https://www.vexrobotics.com/iq-standoff.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Pressure_Gauge",
+  "sku": "",
+  "description": "Pressure Gauge",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3x_Pitch_Capped_Plastic_Shaft",
+  "sku": "",
+  "description": "3x Pitch Capped Plastic Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "VEX_Portable_Competition_Field_Perimeter",
+  "sku": "",
+  "description": "VEX Portable Competition Field Perimeter",
+  "shop_url": "https://www.vexrobotics.com/276-8242.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_Capped_Shaft_228_2500_2219",
+  "sku": "",
+  "description": "1\" Capped Shaft (228-2500-2219)",
+  "shop_url": "https://www.vexrobotics.com/capped-shafts.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Cam_Follower",
+  "sku": "",
+  "description": "Cam Follower",
+  "shop_url": "https://www.vexrobotics.com/276-2045.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x4_Beam",
+  "sku": "",
+  "description": "2x4 Beam",
+  "shop_url": "https://www.vexrobotics.com/iq-2xbeam-add.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_8_Nylon_Spacer",
+  "sku": "",
+  "description": "1/8\" Nylon Spacer",
+  "shop_url": "https://www.vexrobotics.com/spacers-washers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x20_Beam",
+  "sku": "",
+  "description": "2x20 Beam",
+  "shop_url": "https://www.vexrobotics.com/iq-2xbeam-add.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Hand_Crank",
+  "sku": "",
+  "description": "Hand Crank",
+  "shop_url": "https://www.vexrobotics.com/276-2045.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "High_Strength_Chain_Links",
+  "sku": "",
+  "description": "High Strength Chain Links",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Light_Sensor",
+  "sku": "",
+  "description": "Light Sensor",
+  "shop_url": "https://www.vexrobotics.com/276-2158.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Pitch_Plastic_Shaft",
+  "sku": "",
+  "description": "2x Pitch Plastic Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Air_Pressure_Regulator_Mounting_Bracket",
+  "sku": "",
+  "description": "Air Pressure Regulator Mounting Bracket",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "U_Channel_2x2x2x20",
+  "sku": "",
+  "description": "U-Channel 2x2x2x20",
+  "shop_url": "https://www.vexrobotics.com/276-7285.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_320mm_Travel_Omni_Directional_Anti_Static_Wheel",
+  "sku": "",
+  "description": "4\" (320mm Travel) Omni-Directional Anti-Static Wheel",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_500_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 1.500\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_320mm_Travel_Anti_Static_Wheel_2_Pack",
+  "sku": "",
+  "description": "4\" (320mm Travel) Anti-Static Wheel (2-Pack)",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_Controller",
+  "sku": "",
+  "description": "V5 Controller",
+  "shop_url": "https://www.vexrobotics.com/276-4820.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "U_Joint",
+  "sku": "",
+  "description": "U-Joint",
+  "shop_url": "https://www.vexrobotics.com/276-2045.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "72T_High_Strength_Gear_v2_6_Pack",
+  "sku": "",
+  "description": "72T High Strength Gear v2 (6-Pack)",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "50mm_Stroke_Pneumatic_Cylinder",
+  "sku": "",
+  "description": "50mm Stroke Pneumatic Cylinder",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "84T_High_Strength_Gear",
+  "sku": "",
+  "description": "84T High Strength Gear",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "75mm_Stroke_Pneumatic_Cylinder",
+  "sku": "",
+  "description": "75mm Stroke Pneumatic Cylinder",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x8_Beam",
+  "sku": "",
+  "description": "2x8 Beam",
+  "shop_url": "https://www.vexrobotics.com/iq-2xbeam-add.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Flashlight",
+  "sku": "",
+  "description": "Flashlight",
+  "shop_url": "https://www.vexrobotics.com/276-2210.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Pneumatic_Fitting_Plug",
+  "sku": "",
+  "description": "Pneumatic Fitting Plug",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Turntable_Mounting_Bracket",
+  "sku": "",
+  "description": "Turntable Mounting Bracket",
+  "shop_url": "https://www.vexrobotics.com/276-5652.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "7_2V_Robot_Battery_NiMH_3000mAh",
+  "sku": "",
+  "description": "7.2V Robot Battery NiMH 3000mAh",
+  "shop_url": "https://www.vexrobotics.com/batteries-and-chargers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x12_Beam",
+  "sku": "",
+  "description": "1x12 Beam",
+  "shop_url": "https://www.vexrobotics.com/228-3519.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "60_Degree_Bent_Gusset",
+  "sku": "",
+  "description": "60 Degree Bent Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "0x3_Capped_Connector_Pin",
+  "sku": "",
+  "description": "0x3 Capped Connector Pin",
+  "shop_url": "https://www.vexrobotics.com/228-5656.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "30_Degree_Flat_Gusset",
+  "sku": "",
+  "description": "30 Degree Flat Gusset",
+  "shop_url": "https://www.vexrobotics.com/gussets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Conveyor_belt_Base_Links",
+  "sku": "",
+  "description": "Conveyor-belt Base Links",
+  "shop_url": "https://www.vexrobotics.com/276-2214.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3_8_OD_x_8_Click_On_Spacer_0_250",
+  "sku": "",
+  "description": "3/8\" OD x #8 Click-On Spacer, 0.250\"",
+  "shop_url": "https://www.vexrobotics.com/spacers-washers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Rack_Gear_Pinion",
+  "sku": "",
+  "description": "Rack Gear & Pinion",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x4_Beam",
+  "sku": "",
+  "description": "1x4 Beam",
+  "shop_url": "https://www.vexrobotics.com/228-3519.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_Post_Hex_Nut_Retainer",
+  "sku": "",
+  "description": "4-Post Hex Nut Retainer",
+  "shop_url": "https://www.vexrobotics.com/nut-retainers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Star_Drive_Clamping_Shaft_Collar",
+  "sku": "",
+  "description": "Star Drive Clamping Shaft Collar",
+  "shop_url": "https://www.vexrobotics.com/v5-shaft-collars.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x3_Beam",
+  "sku": "",
+  "description": "2x3 Beam",
+  "shop_url": "https://www.vexrobotics.com/2xbeamodd.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Tank_Tread_Drive_Wheels",
+  "sku": "",
+  "description": "Tank Tread Drive Wheels",
+  "shop_url": "https://www.vexrobotics.com/276-6558.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_Wheel",
+  "sku": "",
+  "description": "4\" Wheel",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x5x1x25_Aluminum_C_Channel",
+  "sku": "",
+  "description": "1x5x1x25 Aluminum C-Channel",
+  "shop_url": "https://www.vexrobotics.com/channel.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Wide_2x1_Corner_Connector",
+  "sku": "",
+  "description": "2x Wide, 2x1 Corner Connector",
+  "shop_url": "https://www.vexrobotics.com/iq-corner.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Rack_Gearbox_Bracket_v2",
+  "sku": "",
+  "description": "Rack Gearbox Bracket v2",
+  "shop_url": "https://www.vexrobotics.com/advanced-gearbox-brackets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x9_Beam",
+  "sku": "",
+  "description": "2x9 Beam",
+  "shop_url": "https://www.vexrobotics.com/2xbeamodd.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Line_Tracker",
+  "sku": "",
+  "description": "Line Tracker",
+  "shop_url": "https://www.vexrobotics.com/276-2154.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Single_Bogie_Wheel",
+  "sku": "",
+  "description": "Single Bogie Wheel",
+  "shop_url": "https://www.vexrobotics.com/276-6558.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "16t_Bevel_Gear",
+  "sku": "",
+  "description": "16t Bevel Gear",
+  "shop_url": "https://www.vexrobotics.com/276-2045.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Differential_Bevel_Gear",
+  "sku": "",
+  "description": "Differential & Bevel Gear",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Drop_Off_Cam",
+  "sku": "",
+  "description": "Drop Off Cam",
+  "shop_url": "https://www.vexrobotics.com/276-2045.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Clutch",
+  "sku": "",
+  "description": "Clutch",
+  "shop_url": "https://www.vexrobotics.com/393-motors.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x2x1x35_Steel_C_Channel",
+  "sku": "",
+  "description": "1x2x1x35 Steel C-Channel",
+  "shop_url": "https://www.vexrobotics.com/channel.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Pneumatic_Reservoir_Assembly",
+  "sku": "",
+  "description": "Pneumatic Reservoir Assembly",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "25mm_Stroke_Pneumatic_Cylinder",
+  "sku": "",
+  "description": "25mm Stroke Pneumatic Cylinder",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3_25_260mm_Travel_Omni_Directional_Anti_Static_Wheel",
+  "sku": "",
+  "description": "3.25\" (260mm Travel) Omni-Directional Anti-Static Wheel",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "18T_High_Strength_Sprocket",
+  "sku": "",
+  "description": "18T High Strength Sprocket",
+  "shop_url": "https://www.vexrobotics.com/hs-sprockets-and-chain.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Lead_Screw_Bracket",
+  "sku": "",
+  "description": "Lead Screw Bracket",
+  "shop_url": "https://www.vexrobotics.com/276-2045.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3x3x35_Steel_Angle",
+  "sku": "",
+  "description": "3x3x35 Steel Angle",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Tank_Tread_Traction_Links",
+  "sku": "",
+  "description": "Tank Tread Traction Links",
+  "shop_url": "https://www.vexrobotics.com/276-2214.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Metal_Shaft_Inserts",
+  "sku": "",
+  "description": "Metal Shaft Inserts",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "12T_High_Strength_Sprocket_HS_Bore",
+  "sku": "",
+  "description": "12T High Strength Sprocket (HS Bore)",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "XL_Turntable_Plain_Bushing",
+  "sku": "",
+  "description": "XL Turntable Plain Bushing",
+  "shop_url": "https://www.vexrobotics.com/iq-planetarygear.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x18_Beam",
+  "sku": "",
+  "description": "2x18 Beam",
+  "shop_url": "https://www.vexrobotics.com/228-5653.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "90_Degree_Gusset_Set_Angle",
+  "sku": "",
+  "description": "90-Degree Gusset Set - Angle",
+  "shop_url": "https://www.vexrobotics.com/gussets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "90_Degree_Gusset_Set_Plate",
+  "sku": "",
+  "description": "90-Degree Gusset Set - Plate",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3x3_Plus_Gusset_Beam",
+  "sku": "",
+  "description": "3x3 Plus Gusset Beam",
+  "shop_url": "https://www.vexrobotics.com/iq-planetarygear.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x14_Beam",
+  "sku": "",
+  "description": "1x14 Beam",
+  "shop_url": "https://www.vexrobotics.com/1xbeamlong.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "6_00_Standoff",
+  "sku": "",
+  "description": "6.00\" Standoff",
+  "shop_url": "https://www.vexrobotics.com/standoffs-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_Robot_Brain_Mounting_Flange_Short",
+  "sku": "",
+  "description": "V5 Robot Brain Mounting Flange (Short)",
+  "shop_url": "https://www.vexrobotics.com/276-4810.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_8_High_Strength_Shaft_Spacer",
+  "sku": "",
+  "description": "1/8\" High Strength Shaft Spacer",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x16_Beam",
+  "sku": "",
+  "description": "1x16 Beam",
+  "shop_url": "https://www.vexrobotics.com/1xbeamlong.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Wide_1x1_Offset_Corner_Connector",
+  "sku": "",
+  "description": "2x Wide, 1x1 Offset Corner Connector",
+  "shop_url": "https://www.vexrobotics.com/iq-corner.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_2_Screw",
+  "sku": "",
+  "description": "#8-32 x 1/2\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "45_Degree_Bent_Gusset",
+  "sku": "",
+  "description": "45 Degree Bent Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "0x2_Capped_Connector_Pin",
+  "sku": "",
+  "description": "0x2 Capped Connector Pin",
+  "shop_url": "https://www.vexrobotics.com/228-5656.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_Distance_Sensor",
+  "sku": "",
+  "description": "V5 Distance Sensor",
+  "shop_url": "https://www.vexrobotics.com/276-4852.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4x_Pitch_Plastic_Motor_Shaft",
+  "sku": "",
+  "description": "4x Pitch Plastic Motor Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "AI_Vision_Sensor",
+  "sku": "",
+  "description": "AI Vision Sensor",
+  "shop_url": "https://www.vexrobotics.com/276-8659.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Large_Chassis_Corner_Connector",
+  "sku": "",
+  "description": "Large Chassis Corner Connector",
+  "shop_url": "https://www.vexrobotics.com/iq-corner.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_7_8_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 7/8\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "24_High_Strength_Shaft",
+  "sku": "",
+  "description": "24\" High Strength Shaft",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "VEX_IQ_Touch_LED",
+  "sku": "",
+  "description": "VEX IQ Touch LED",
+  "shop_url": "https://www.vexrobotics.com/228-3010.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Wide_2x2_Corner_Connector",
+  "sku": "",
+  "description": "2x Wide, 2x2 Corner Connector",
+  "shop_url": "https://www.vexrobotics.com/iq-corner.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Straight_Pneumatic_Fitting",
+  "sku": "",
+  "description": "Straight Pneumatic Fitting",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x10_Beam",
+  "sku": "",
+  "description": "2x10 Beam",
+  "shop_url": "https://www.vexrobotics.com/iq-2xbeam-add.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "High_Strength_Shaft_Adapter_8_Round_Bore_1_2_Long",
+  "sku": "",
+  "description": "High Strength Shaft Adapter (#8 Round Bore, 1/2\" Long)",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Flat_Bearing",
+  "sku": "",
+  "description": "Flat Bearing",
+  "shop_url": "https://www.vexrobotics.com/v5-bearings.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_Wheel_High_Strength_Bore",
+  "sku": "",
+  "description": "4\" Wheel (High Strength Bore)",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4x_Pitch_Capped_Plastic_Shaft",
+  "sku": "",
+  "description": "4x Pitch Capped Plastic Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Drive_Shaft_Bar_Lock",
+  "sku": "",
+  "description": "Drive Shaft Bar Lock",
+  "shop_url": "https://www.vexrobotics.com/275-1065.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_000_Star_Drive_Coupler",
+  "sku": "",
+  "description": "#8-32 x 1.000\" Star Drive Coupler",
+  "shop_url": "https://www.vexrobotics.com/couplers-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2_Capped_Shaft_228_2500_2223",
+  "sku": "",
+  "description": "2\" Capped Shaft (228-2500-2223)",
+  "shop_url": "https://www.vexrobotics.com/capped-shafts.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_4_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 1/4\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Robot_Battery_Li_Ion",
+  "sku": "",
+  "description": "Robot Battery (Li-Ion)",
+  "shop_url": "https://www.vexrobotics.com/228-7045.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x2_Beam",
+  "sku": "",
+  "description": "2x2 Beam",
+  "shop_url": "https://www.vexrobotics.com/iq-2xbeam-add.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Pitch_Capped_Plastic_Shaft",
+  "sku": "",
+  "description": "2x Pitch Capped Plastic Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "High_Strength_Shaft_Bearing",
+  "sku": "",
+  "description": "High Strength Shaft Bearing",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "BEST_Motor_Hub",
+  "sku": "",
+  "description": "BEST Motor Hub",
+  "shop_url": "https://www.vexrobotics.com/270-6430.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Washer",
+  "sku": "",
+  "description": "Washer",
+  "shop_url": "https://www.vexrobotics.com/iq-planetarygear.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Pneumatic_Pump",
+  "sku": "",
+  "description": "Pneumatic Pump",
+  "shop_url": "https://www.vexrobotics.com/228-8795.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x1x35_Aluminum_Angle",
+  "sku": "",
+  "description": "1x1x35 Aluminum Angle",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_00_Standoff",
+  "sku": "",
+  "description": "4.00\" Standoff",
+  "shop_url": "https://www.vexrobotics.com/standoffs-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "5_Capped_Shaft_228_2500_2230",
+  "sku": "",
+  "description": "5\" Capped Shaft (228-2500-2230)",
+  "shop_url": "https://www.vexrobotics.com/capped-shafts.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Gusset_Pack_Plus",
+  "sku": "",
+  "description": "Gusset Pack - Plus",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Pitch_Standoff",
+  "sku": "",
+  "description": "2x Pitch Standoff",
+  "shop_url": "https://www.vexrobotics.com/iq-standoff.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_000_Screw",
+  "sku": "",
+  "description": "#8-32 x 1.000\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "90_Degree_Bent_Gusset",
+  "sku": "",
+  "description": "90 Degree Bent Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Pitch_Pneumatic_Cylinder",
+  "sku": "",
+  "description": "2x Pitch Pneumatic Cylinder",
+  "shop_url": "https://www.vexrobotics.com/228-8795.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "12T_High_Strength_Metal_Pinion",
+  "sku": "",
+  "description": "12T High Strength Metal Pinion",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "200mm_Travel_Omni_Directional_Wheel",
+  "sku": "",
+  "description": "200mm Travel Omni-Directional Wheel",
+  "shop_url": "https://www.vexrobotics.com/228-2536.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_7_8_Screw",
+  "sku": "",
+  "description": "#8-32 x 7/8\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_2_000_Screw",
+  "sku": "",
+  "description": "#8-32 x 2.000\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "36T_High_Strength_Gear",
+  "sku": "",
+  "description": "36T High Strength Gear",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_Inertial_Sensor",
+  "sku": "",
+  "description": "V5 Inertial Sensor",
+  "shop_url": "https://www.vexrobotics.com/276-4855.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Low_Profile_Bearing_Flat",
+  "sku": "",
+  "description": "Low Profile Bearing Flat",
+  "shop_url": "https://www.vexrobotics.com/v5-bearings.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_Rotation_Sensor",
+  "sku": "",
+  "description": "V5 Rotation Sensor",
+  "shop_url": "https://www.vexrobotics.com/276-6050.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_High_Strength_Shaft",
+  "sku": "",
+  "description": "4\" High Strength Shaft",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "24T_High_Strength_Gear_v2",
+  "sku": "",
+  "description": "24T High Strength Gear v2",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_3_8_Screw",
+  "sku": "",
+  "description": "#8-32 x 3/8\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Intake_Rollers",
+  "sku": "",
+  "description": "Intake Rollers",
+  "shop_url": "https://www.vexrobotics.com/276-1499.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "24T_High_Strength_Sprocket",
+  "sku": "",
+  "description": "24T High Strength Sprocket",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "60T_Gear",
+  "sku": "",
+  "description": "60T Gear",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "XL_Turntable_36_Tooth_Ring_Gear_Bushing",
+  "sku": "",
+  "description": "XL Turntable 36 Tooth Ring Gear Bushing",
+  "shop_url": "https://www.vexrobotics.com/iq-planetarygear.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x2x1x35_Aluminum_C_Channel",
+  "sku": "",
+  "description": "1x2x1x35 Aluminum C-Channel",
+  "shop_url": "https://www.vexrobotics.com/channel.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Tall_Conveyor_belt_Inserts",
+  "sku": "",
+  "description": "Tall Conveyor-belt Inserts",
+  "shop_url": "https://www.vexrobotics.com/276-2214.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "High_Strength_Pillow_Block_Bearing",
+  "sku": "",
+  "description": "High Strength Pillow Block Bearing",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "45_Degree_Gusset",
+  "sku": "",
+  "description": "45 Degree Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2_75_220mm_Travel_Omni_Directional_Anti_Static_Wheel",
+  "sku": "",
+  "description": "2.75\" (220mm Travel) Omni-Directional Anti-Static Wheel",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Angle_Corner_Gusset",
+  "sku": "",
+  "description": "Angle Corner Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_3_4_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 3/4\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Gusset_Pack_Angle",
+  "sku": "",
+  "description": "Gusset Pack - Angle",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Pitch_Plastic_Motor_Shaft",
+  "sku": "",
+  "description": "2x Pitch Plastic Motor Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Pneumatic_Straight_Fitting",
+  "sku": "",
+  "description": "Pneumatic Straight Fitting",
+  "shop_url": "https://www.vexrobotics.com/228-8795.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Lead_Screw",
+  "sku": "",
+  "description": "Lead Screw",
+  "shop_url": "https://www.vexrobotics.com/276-2045.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_750_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 1.750\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x16_Beam",
+  "sku": "",
+  "description": "2x16 Beam",
+  "shop_url": "https://www.vexrobotics.com/iq-2xbeam-add.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_2_250_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 2.250\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "30T_High_Strength_Sprocket",
+  "sku": "",
+  "description": "30T High Strength Sprocket",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_Post_Standoff_Retainer",
+  "sku": "",
+  "description": "4-Post Standoff Retainer",
+  "shop_url": "https://www.vexrobotics.com/standoff-retainers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "5x_Pitch_Capped_Plastic_Shaft",
+  "sku": "",
+  "description": "5x Pitch Capped Plastic Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x3_Beam",
+  "sku": "",
+  "description": "1x3 Beam",
+  "shop_url": "https://www.vexrobotics.com/228-3519.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x1x25_Steel_Chassis_Rail",
+  "sku": "",
+  "description": "2x1x25 Steel Chassis Rail",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "High_Strength_Bushing_Kit_1_8_Thick",
+  "sku": "",
+  "description": "High Strength Bushing Kit (1/8\" Thick)",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Motor_Controller_29",
+  "sku": "",
+  "description": "Motor Controller 29",
+  "shop_url": "https://www.vexrobotics.com/276-2193.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_000_Hex_Drive_Coupler",
+  "sku": "",
+  "description": "#8-32 x 1.000\" Hex Drive Coupler",
+  "shop_url": "https://www.vexrobotics.com/couplers-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "VEX_GPS_Sensor",
+  "sku": "",
+  "description": "VEX GPS Sensor",
+  "shop_url": "https://www.vexrobotics.com/276-7405.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x10_Beam",
+  "sku": "",
+  "description": "1x10 Beam",
+  "shop_url": "https://www.vexrobotics.com/228-3519.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x1_Connector_Pin",
+  "sku": "",
+  "description": "1x1 Connector Pin",
+  "shop_url": "https://www.vexrobotics.com/iq-connectorpin.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Power_Expander",
+  "sku": "",
+  "description": "Power Expander",
+  "shop_url": "https://www.vexrobotics.com/276-2271.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x2_Connector_Pin",
+  "sku": "",
+  "description": "2x2 Connector Pin",
+  "shop_url": "https://www.vexrobotics.com/iq-connectorpin.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x8_Beam",
+  "sku": "",
+  "description": "1x8 Beam",
+  "shop_url": "https://www.vexrobotics.com/228-3519.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8T_Sprocket_6P",
+  "sku": "",
+  "description": "8T Sprocket, 6P",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_4_Screw",
+  "sku": "",
+  "description": "#8-32 x 1/4\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Hinge",
+  "sku": "",
+  "description": "Hinge",
+  "shop_url": "https://www.vexrobotics.com/275-1272.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "6_32_x_1_2_Screw",
+  "sku": "",
+  "description": "#6-32 x 1/2\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x_Pitch_Standoff",
+  "sku": "",
+  "description": "1x Pitch Standoff",
+  "shop_url": "https://www.vexrobotics.com/iq-standoff.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x7_Beam",
+  "sku": "",
+  "description": "2x7 Beam",
+  "shop_url": "https://www.vexrobotics.com/2xbeamodd.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2_5_Capped_Shaft_228_2500_2225",
+  "sku": "",
+  "description": "2.5\" Capped Shaft (228-2500-2225)",
+  "shop_url": "https://www.vexrobotics.com/capped-shafts.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "0x3_Idler_Pin",
+  "sku": "",
+  "description": "0x3 Idler Pin",
+  "shop_url": "https://www.vexrobotics.com/iq-planetarygear.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x2_Center_Lock_Plate",
+  "sku": "",
+  "description": "2x2 Center Lock Plate",
+  "shop_url": "https://www.vexrobotics.com/228-3511.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Lock_Bar",
+  "sku": "",
+  "description": "Lock Bar",
+  "shop_url": "https://www.vexrobotics.com/v5-bearings.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Steel_Washer",
+  "sku": "",
+  "description": "Steel Washer",
+  "shop_url": "https://www.vexrobotics.com/spacers-washers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "0_25x_Pitch_Spacer",
+  "sku": "",
+  "description": "0.25x Pitch Spacer",
+  "shop_url": "https://www.vexrobotics.com/228-3511.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "90_Degree_Flat_Gusset",
+  "sku": "",
+  "description": "90 Degree Flat Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_Post_Standoff_Retainer",
+  "sku": "",
+  "description": "1-Post Standoff Retainer",
+  "shop_url": "https://www.vexrobotics.com/standoff-retainers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x2x25_Steel_Angle",
+  "sku": "",
+  "description": "2x2x25 Steel Angle",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3_4_Standoff",
+  "sku": "",
+  "description": "3/4\" Standoff",
+  "shop_url": "https://www.vexrobotics.com/standoffs-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Tee_Fittings",
+  "sku": "",
+  "description": "Tee Fittings",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "High_Strength_Bushing_Kit_5_16_Thick",
+  "sku": "",
+  "description": "High Strength Bushing Kit (5/16\" Thick)",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2_50_Standoff",
+  "sku": "",
+  "description": "2.50\" Standoff",
+  "shop_url": "https://www.vexrobotics.com/standoffs-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3_5_Capped_Shaft_228_2500_2227",
+  "sku": "",
+  "description": "3.5\" Capped Shaft (228-2500-2227)",
+  "shop_url": "https://www.vexrobotics.com/capped-shafts.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Wide_2x1_Offset_Corner_Connector",
+  "sku": "",
+  "description": "2x Wide, 2x1 Offset Corner Connector",
+  "shop_url": "https://www.vexrobotics.com/iq-corner.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x2_Connector_Pin",
+  "sku": "",
+  "description": "1x2 Connector Pin",
+  "shop_url": "https://www.vexrobotics.com/iq-connectorpin.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x2x2x20_Aluminum_U_Channel_6_pack",
+  "sku": "",
+  "description": "2x2x2x20 Aluminum U-Channel (6-pack)",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "VEX_IQ_Robot_Brain_Gen_2",
+  "sku": "",
+  "description": "VEX IQ Robot Brain Gen 2",
+  "shop_url": "https://www.vexrobotics.com/228-6480.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_4_Nylon_Spacer",
+  "sku": "",
+  "description": "1/4\" Nylon Spacer",
+  "shop_url": "https://www.vexrobotics.com/spacers-washers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x25_Steel_Bar",
+  "sku": "",
+  "description": "1x25 Steel Bar",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "6T_High_Strength_Sprocket",
+  "sku": "",
+  "description": "6T High Strength Sprocket",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_750_Screw",
+  "sku": "",
+  "description": "#8-32 x 1.750\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "6_32_x_1_4_Screw",
+  "sku": "",
+  "description": "#6-32 x 1/4\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x14_Beam",
+  "sku": "",
+  "description": "2x14 Beam",
+  "shop_url": "https://www.vexrobotics.com/228-5653.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_Post_Hex_Nut_Retainer_w_Bearing_Flat",
+  "sku": "",
+  "description": "1-Post Hex Nut Retainer w/ Bearing Flat",
+  "shop_url": "https://www.vexrobotics.com/nut-retainers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Double_Bogie_Wheel",
+  "sku": "",
+  "description": "Double Bogie Wheel",
+  "shop_url": "https://www.vexrobotics.com/276-6558.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_Post_Standoff_Retainer_with_Bearing_Flat",
+  "sku": "",
+  "description": "1-Post Standoff Retainer with Bearing Flat",
+  "shop_url": "https://www.vexrobotics.com/standoff-retainers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "VEX_IQ_Bumper_Switch",
+  "sku": "",
+  "description": "VEX IQ Bumper Switch",
+  "shop_url": "https://www.vexrobotics.com/228-2677.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Pneumatic_Tee_Fittings",
+  "sku": "",
+  "description": "Pneumatic Tee Fittings",
+  "shop_url": "https://www.vexrobotics.com/228-8795.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Gusset_Pack_Pivot",
+  "sku": "",
+  "description": "Gusset Pack - Pivot",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8mm_Plastic_Spacer",
+  "sku": "",
+  "description": "8mm Plastic Spacer",
+  "shop_url": "https://www.vexrobotics.com/spacers-washers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Schrader_Valve",
+  "sku": "",
+  "description": "Schrader Valve",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_3_Wire_Expander",
+  "sku": "",
+  "description": "V5 3-Wire Expander",
+  "shop_url": "https://www.vexrobotics.com/276-5299.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2_75_Wheel",
+  "sku": "",
+  "description": "2.75\" Wheel",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "45_Degree_Flat_Gusset",
+  "sku": "",
+  "description": "45 Degree Flat Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_2_000_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 2.000\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "High_Strength_Chain_Attachment_Links",
+  "sku": "",
+  "description": "High Strength Chain Attachment Links",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4x_Pitch_Pneumatic_Cylinder",
+  "sku": "",
+  "description": "4x Pitch Pneumatic Cylinder",
+  "shop_url": "https://www.vexrobotics.com/228-8795.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_16_High_Strength_Shaft_Spacer",
+  "sku": "",
+  "description": "1/16\" High Strength Shaft Spacer",
+  "shop_url": "https://www.vexrobotics.com/hs-hardware.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5RC_License_Plate",
+  "sku": "",
+  "description": "V5RC License Plate",
+  "shop_url": "https://www.vexrobotics.com/276-3938.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "5x_Pitch_Plastic_Shaft",
+  "sku": "",
+  "description": "5x Pitch Plastic Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2_Omni_Directional_Wheel",
+  "sku": "",
+  "description": "2\u201d Omni-Directional Wheel",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x1x35_Steel_Chassis_Rail",
+  "sku": "",
+  "description": "2x1x35 Steel Chassis Rail",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Battery_Strap",
+  "sku": "",
+  "description": "Battery Strap",
+  "shop_url": "https://www.vexrobotics.com/276-2219.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3_Wire_Servo",
+  "sku": "",
+  "description": "3-Wire Servo",
+  "shop_url": "https://www.vexrobotics.com/393-motors.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_Shoulder_Screws",
+  "sku": "",
+  "description": "#8-32 Shoulder Screws",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x3x1x35_Aluminum_C_Channel",
+  "sku": "",
+  "description": "1x3x1x35 Aluminum C-Channel",
+  "shop_url": "https://www.vexrobotics.com/channel.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Wide_1x2_Corner_Connector",
+  "sku": "",
+  "description": "2x Wide, 1x2 Corner Connector",
+  "shop_url": "https://www.vexrobotics.com/iq-corner.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_Optical_Sensor",
+  "sku": "",
+  "description": "V5 Optical Sensor",
+  "shop_url": "https://www.vexrobotics.com/276-7043.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "0_5x_Pitch_Standoff_Extender",
+  "sku": "",
+  "description": "0.5x Pitch Standoff Extender",
+  "shop_url": "https://www.vexrobotics.com/228-7461.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "0_5x_Pitch_Standoff",
+  "sku": "",
+  "description": "0.5x Pitch Standoff",
+  "shop_url": "https://www.vexrobotics.com/iq-standoff.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "0x1_Sheet_Pin",
+  "sku": "",
+  "description": "0x1 Sheet Pin",
+  "shop_url": "https://www.vexrobotics.com/thinsheet.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_Low_Profile_Nut",
+  "sku": "",
+  "description": "#8-32 Low Profile Nut",
+  "shop_url": "https://www.vexrobotics.com/nuts-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "24T_High_Strength_Sprocket_HS_Bore",
+  "sku": "",
+  "description": "24T High Strength Sprocket (HS Bore)",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_5_8_Screw",
+  "sku": "",
+  "description": "#8-32 x 5/8\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x_Wide_2x2_Offset_Corner_Connector",
+  "sku": "",
+  "description": "2x Wide, 2x2 Offset Corner Connector",
+  "shop_url": "https://www.vexrobotics.com/228-5657.html",
+  "step_url": "https://content.vexrobotics.com/cad/STEP/AdvancedCornerCAD.zip",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "60_Degree_Flat_Gusset",
+  "sku": "",
+  "description": "60 Degree Flat Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Shaft_Collar_Retainer_with_Bearing_Flat",
+  "sku": "",
+  "description": "Shaft Collar Retainer with Bearing Flat",
+  "shop_url": "https://www.vexrobotics.com/v5-bearings.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "VEX_CTE_Workcell",
+  "sku": "",
+  "description": "VEX CTE Workcell",
+  "shop_url": "https://www.vexrobotics.com/234-8952.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_5_8_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 5/8\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_500_Standoff",
+  "sku": "",
+  "description": "1.500\" Standoff",
+  "shop_url": "https://www.vexrobotics.com/standoffs-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "30T_High_Strength_Sprocket_HS_Bore",
+  "sku": "",
+  "description": "30T High Strength Sprocket (HS Bore)",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_00_Standoff",
+  "sku": "",
+  "description": "1.00\" Standoff",
+  "shop_url": "https://www.vexrobotics.com/standoffs-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4x4_Plate",
+  "sku": "",
+  "description": "4x4 Plate",
+  "shop_url": "https://www.vexrobotics.com/iq-4xplate.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_1_250_Screw",
+  "sku": "",
+  "description": "#8-32 x 1.250\" Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "2x6_Beam",
+  "sku": "",
+  "description": "2x6 Beam",
+  "shop_url": "https://www.vexrobotics.com/iq-2xbeam-add.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Shaft_Bushing",
+  "sku": "",
+  "description": "Shaft Bushing",
+  "shop_url": "https://www.vexrobotics.com/228-3511.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Teflon_Washer",
+  "sku": "",
+  "description": "Teflon Washer",
+  "shop_url": "https://www.vexrobotics.com/spacers-washers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x18_Beam",
+  "sku": "",
+  "description": "1x18 Beam",
+  "shop_url": "https://www.vexrobotics.com/1xbeamlong.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Medium_Conveyor_belt_Inserts",
+  "sku": "",
+  "description": "Medium Conveyor-belt Inserts",
+  "shop_url": "https://www.vexrobotics.com/276-2214.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "24T_Sprocket_6P",
+  "sku": "",
+  "description": "24T Sprocket, 6P",
+  "shop_url": "https://www.vexrobotics.com/v5-sprockets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_2_500_Star_Drive_Screw",
+  "sku": "",
+  "description": "#8-32 x 2.500\" Star Drive Screw",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4x_Pitch_Plastic_Shaft",
+  "sku": "",
+  "description": "4x Pitch Plastic Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1_2_Thumbscrew",
+  "sku": "",
+  "description": "1/2\" Thumbscrew",
+  "shop_url": "https://www.vexrobotics.com/all-screws.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "EXP_Plastic_Field_Tile",
+  "sku": "",
+  "description": "EXP Plastic Field Tile",
+  "shop_url": "https://www.vexrobotics.com/280-7752.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Bevel_Gearbox_Bracket",
+  "sku": "",
+  "description": "Bevel Gearbox Bracket",
+  "shop_url": "https://www.vexrobotics.com/advanced-gearbox-brackets.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "0x2_Idler_Pin",
+  "sku": "",
+  "description": "0x2 Idler Pin",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x_Wide_1x1_Offset_Corner_Connector",
+  "sku": "",
+  "description": "1x Wide, 1x1 Offset Corner Connector",
+  "shop_url": "https://www.vexrobotics.com/iq-corner.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "6_Capped_Shaft_228_2500_2232",
+  "sku": "",
+  "description": "6\" Capped Shaft (228-2500-2232)",
+  "shop_url": "https://www.vexrobotics.com/capped-shafts.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_Smart_Motor_5_5W",
+  "sku": "",
+  "description": "V5 Smart Motor (5.5W)",
+  "shop_url": "https://www.vexrobotics.com/276-4842.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3_8_OD_x_8_Click_On_Spacer_0_063",
+  "sku": "",
+  "description": "3/8\" OD x #8 Click-On Spacer, 0.063\"",
+  "shop_url": "https://www.vexrobotics.com/spacers-washers.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_0_500_Star_Drive_Coupler",
+  "sku": "",
+  "description": "#8-32 x 0.500\" Star Drive Coupler",
+  "shop_url": "https://www.vexrobotics.com/couplers-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x5x1x35_Steel_C_Channel",
+  "sku": "",
+  "description": "1x5x1x35 Steel C-Channel",
+  "shop_url": "https://www.vexrobotics.com/channel.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_x_0_500_Hex_Drive_Coupler",
+  "sku": "",
+  "description": "#8-32 x 0.500\" Hex Drive Coupler",
+  "shop_url": "https://www.vexrobotics.com/couplers-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "12x12_Plate",
+  "sku": "",
+  "description": "12x12 Plate",
+  "shop_url": "https://www.vexrobotics.com/largeplateaddon.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Battery_Extension_Cable",
+  "sku": "",
+  "description": "Battery Extension Cable",
+  "shop_url": "https://www.vexrobotics.com/276-3442.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Motor_Post",
+  "sku": "",
+  "description": "Motor Post",
+  "shop_url": "https://www.vexrobotics.com/276-1843.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Elbow_Fitting",
+  "sku": "",
+  "description": "Elbow Fitting",
+  "shop_url": "https://www.vexrobotics.com/276-8750.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Low_Profile_High_Strength_Clamping_Shaft_Collar",
+  "sku": "",
+  "description": "Low Profile High Strength Clamping Shaft Collar",
+  "shop_url": "https://www.vexrobotics.com/hs-shaft-collars.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "V5_Smart_Motor",
+  "sku": "",
+  "description": "V5 Smart Motor",
+  "shop_url": "https://www.vexrobotics.com/276-4840.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "24T_Bevel_Gear",
+  "sku": "",
+  "description": "24T Bevel Gear",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "VEX_CTE_6_Axis_Robotic_Arm",
+  "sku": "",
+  "description": "VEX CTE 6-Axis Robotic Arm",
+  "shop_url": "https://www.vexrobotics.com/cte-arm.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "5_00_Standoff",
+  "sku": "",
+  "description": "5.00\" Standoff",
+  "shop_url": "https://www.vexrobotics.com/standoffs-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "48T_High_Strength_Gear_v2_8_Pack",
+  "sku": "",
+  "description": "48T High Strength Gear v2 (8-Pack)",
+  "shop_url": "https://www.vexrobotics.com/gears.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "8_32_Keps_Nut",
+  "sku": "",
+  "description": "#8-32 Keps Nut",
+  "shop_url": "https://www.vexrobotics.com/nuts-8-32.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "4_Mecanum_Wheel",
+  "sku": "",
+  "description": "4\" Mecanum Wheel",
+  "shop_url": "https://www.vexrobotics.com/wheels.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "3x_Pitch_Plastic_Shaft",
+  "sku": "",
+  "description": "3x Pitch Plastic Shaft",
+  "shop_url": "https://www.vexrobotics.com/228-3620.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "1x2_Idler_Pin",
+  "sku": "",
+  "description": "1x2 Idler Pin",
+  "shop_url": "https://www.vexrobotics.com/iq-planetarygear.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "Battery_Clip",
+  "sku": "",
+  "description": "Battery Clip",
+  "shop_url": "https://www.vexrobotics.com/276-4042.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ },
+ {
+  "name": "C_Channel_Coupler_Gusset",
+  "sku": "",
+  "description": "C-Channel Coupler Gusset",
+  "shop_url": "https://www.vexrobotics.com/v5-structure.html",
+  "step_url": "",
+  "price": null,
+  "currency": "USD"
+ }
+]
