@@ -181,28 +181,30 @@ class ChannelFrame(VEXAssembly):
         """
         return self.rotate(axis="x", degrees=90).translate(z=self.left.flange_len)
 
-    def attach_deck(self, deck, at="middle", inset=0, hardware="screw", rows=3):
+    def attach_deck(self, deck, at="middle", inset=0, hardware="screw", rows=3, shift=0):
         """Bolt a plate across both rails, `rows` screws per rail on the rail web's centre row.
 
         `at` is "middle", "front" or "rear" along the rails and `inset` slides it in pitches.
+        `shift` slides the plate along the rails by that many hole columns of one pitch (0.5"), +/-1, the sign picks which edge it moves toward.
         The plate's two long ends meet the rails, so its length must match the rail spacing.
         """
         from .electronics import free_holes
 
-        rails = {}
-        for h in self.holes:
-            if h.face.name == "web" and h.v == 0 and h.normal[1] > 0.9 and h not in self.taken:
-                rails.setdefault(round(h.position[2]), []).append(h)
-        if len(rails) != 2:
+        webs = [h for h in self.holes if h.face.name == "web" and h.normal[1] > 0.9 and h not in self.taken]
+        zs = [h.position[2] for h in webs]
+        if not webs or max(zs) - min(zs) < 1:
             raise ValueError("expected two rails with free web holes")
-        rails = [sorted(r, key=lambda h: h.position[0]) for r in rails.values()]
-        spacing = round(abs(rails[0][0].position[2] - rails[1][0].position[2]) / UNIT)
+        # screw through each rail's outermost hole row so the plate ends sit flush with the rail edges
+        edge = {"hi": max(zs), "lo": min(zs)}
+        rails = [sorted((h for h in webs if abs(h.position[2] - z) < 0.5), key=lambda h: h.position[0])
+                 for z in (edge["hi"], edge["lo"])]
+        spacing = round(abs(edge["hi"] - edge["lo"]) / UNIT)
         xs = [h.position[0] for h in rails[0]]
         target = {"front": xs[0], "middle": sum(xs) / 2, "rear": xs[-1]}[at] + inset * PITCH * (1 if at != "rear" else -1)
         start = min(range(len(xs) - rows + 1), key=lambda i: abs(sum(xs[i:i + rows]) / rows - target))
         bottom = free_holes(deck, "plate_bottom")
         mid = max(v for _, v in bottom) // 2 + 1
-        v_rows = [mid + 2 * (k - rows // 2) for k in range(rows)]
+        v_rows = [mid + 2 * shift + 2 * (k - rows // 2) for k in range(rows)]
         ends = sorted({u for u, _ in bottom})
         u1 = min((u for u in ends if u + spacing in ends), key=lambda u: abs(2 * u + spacing - (ends[-1] + 1)))
         for flip in (False, True):
