@@ -55,6 +55,16 @@ class VEXAssembly:
                 setattr(wheeled, name, getattr(self, name))
         return wheeled
 
+    def motor_wheel(self, at="front", side="outboard", motor_gearing="blue", inset=0):
+        """Return this U channel or laid-flat frame with a motor-driven 4" wheel on a rail (see drive.py)."""
+        from .drive import place_motor_wheel
+
+        wheeled = place_motor_wheel(self, at=at, side=side, motor_gearing=motor_gearing, inset=inset)
+        for name in ("kind", "w", "h", "hole_count", "length", "outer_width", "flange_len"):
+            if hasattr(self, name):
+                setattr(wheeled, name, getattr(self, name))
+        return wheeled
+
     def add(self, other):
         """Return a new assembly containing this assembly and `other`."""
         combined = VEXAssembly()

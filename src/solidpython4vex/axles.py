@@ -6,7 +6,7 @@ standard 1/8" size (class "axle"). `Shaft.at(mm)` is a place on the shaft, measu
 end, where `shaft.attach(shaft.at(mm), part, part.axle)` puts a part coaxially.
 """
 from .assembly import VEXAssembly
-from .holes import Face, Hole, INCH
+from .holes import Face, Hole, INCH, PITCH
 from .parts import CATALOG, nominal_inches, part, part_info
 
 
@@ -54,9 +54,12 @@ class _AxlePart(VEXAssembly):
     WIDTH = 0.0  # along the axle
     KIND = "axle_round"
     AXLE_ALONG_Y = True  # the STEP model has its axle along y
+    CENTRE = None  # where the axle crosses the middle of the part in the STEP model, if not the origin
 
     def __init__(self):
         shape = part(self.NAME)
+        if self.CENTRE:
+            shape = shape.translate(*(-c for c in self.CENTRE))
         self.shape = shape.rotate((90, 0, 0)) if self.AXLE_ALONG_Y else shape
         self.axle = Hole(_axle_face("axle", self.WIDTH), 0, 0, self.KIND)
         self.holes = [self.axle]
@@ -68,6 +71,17 @@ class Omni_Wheel_4in(_AxlePart):
     NAME = "276_8107_4_320mm_Travel_Omni_Directional_Anti_Static_Wheel"
     WIDTH = 25.04
     KIND = "axle_square"
+    DIAMETER = 101.6
+
+
+class Traction_Wheel_4in(_AxlePart):
+    """4" wheel (276-1497) with a square axle hole; its STEP model has the axle along z."""
+
+    NAME = "276_1497_4_Wheel"
+    WIDTH = 22.31
+    KIND = "axle_square"
+    AXLE_ALONG_Y = False
+    CENTRE = (-37.63, 24.29, 3.39)
     DIAMETER = 101.6
 
 
@@ -121,25 +135,68 @@ class Bearing_Block(VEXAssembly):
 class Bearing_Flat(VEXAssembly):
     """Flat bearing (276-1209): a 35.6 x 10.2 mm plate with three holes on the 0.5" grid.
 
-    The middle hole is the round axle bore and the outer two are mounting holes. A raised ring
-    around each hole stands 2 mm proud of the plate and goes against the structure, so the flat
-    plate is on the far side. The ring tops lie on z=0 and the plate's far face is at z=6.35.
-    The holes are `hole("base", -2, 0)` and `hole("base", 2, 0)` (mounting) and `.axle` (bore,
-    normal +z, away from the structure), the same layout as `Bearing_Block`, so either can be
-    bolted on a row of three adjacent holes.
+    Any one of the three holes can be the round axle bore and the other two take screws.
+    `Bearing_Flat()` has the bore in the middle (screws at u=-2 and u=2, as on a dead wheel).
+    `Bearing_Flat(bore="end")` has it at one end with the screws at u=-2 and u=-4, which is the
+    same pattern as the posts on a `V5_Smart_Motor`'s boss, so the bearing carries the motor's shaft.
+
+    A raised ring around each hole stands 2 mm proud of the plate and goes against the structure.
+    The ring tops lie on z=0 and the plate's far face is at z=6.35. The mounting holes are
+    `hole("base", u, 0)` and `.axle` is the bore, normal +z (away from the structure).
     """
 
     NAME = "276_1209_Flat_Bearing"
     THICKNESS = 6.35  # ring tops to the far face of the plate
     KIND = "axle_round"
 
-    def __init__(self):
+    def __init__(self, bore="middle"):
         from solid2 import multmatrix
 
+        if bore not in ("middle", "end"):
+            raise ValueError("bore must be 'middle' or 'end'")
         self.info = part_info(self.NAME)
         # STEP axis is x, long side y: re-axis so the bore is the z axis and the ring tops are z=0
         shape = part(self.NAME).translate(-82.626, -26.416, 12.7)
-        self.shape = multmatrix([[0, 1, 0, 0], [0, 0, -1, 0], [-1, 0, 0, self.THICKNESS], [0, 0, 0, 1]])(shape)
+        shape = multmatrix([[0, 1, 0, 0], [0, 0, -1, 0], [-1, 0, 0, self.THICKNESS], [0, 0, 0, 1]])(shape)
+        self.shape = shape if bore == "middle" else shape.translate(-PITCH, 0, 0)
         self.axle = Hole(Face("axle", (0, 0, 0), (1, 0, 0), (0, -1, 0), (0, 0, 1), 0), 0, 0, self.KIND)
         base = Face("base", (0, 0, self.THICKNESS / 2), (1, 0, 0), (0, 1, 0), (0, 0, -1), self.THICKNESS)
-        self.holes = [self.axle, Hole(base, -2, 0, "round"), Hole(base, 2, 0, "round")]
+        screws = (-2, 2) if bore == "middle" else (-2, -4)
+        self.holes = [self.axle] + [Hole(base, u, 0, "round") for u in screws]
+
+
+class V5_Smart_Motor(VEXAssembly):
+    """V5 Smart Motor (276-4840), coloured by its gear cartridge: red, green or blue.
+
+    The output end has a flat boss with three holes on the 0.5" grid: the shaft hole and two
+    screw posts, `hole("boss", -2, 0)` and `hole("boss", -4, 0)`. The part's z axis points into
+    the motor body; the boss face is on z=0 with its normal -z (toward whatever it is mounted on).
+    `.axle` is the shaft hole at the origin. The colour is only to help tell motors apart.
+    """
+
+    NAME = "276_4840_V5_Smart_Motor"
+    CARTRIDGES = {"red": 100, "green": 200, "blue": 600}  # rpm
+    SHAFT_X, BOSS_Z = 12.7, 43.5  # where the shaft and the boss flat are in the STEP model
+    KIND = "axle_square"
+
+    def __init__(self, motor_gearing="blue"):
+        from dataclasses import replace
+
+        from solid2 import import_stl, multmatrix
+
+        from .parts import STL_DIR, tint
+
+        if motor_gearing not in self.CARTRIDGES:
+            raise ValueError(f"motor_gearing must be one of {sorted(self.CARTRIDGES)}")
+        self.gearing, self.rpm = motor_gearing, self.CARTRIDGES[motor_gearing]
+        self.info = replace(
+            part_info(self.NAME), description=f"V5 Smart Motor, {motor_gearing} cartridge ({self.rpm} rpm)"
+        )
+        raw = tint(import_stl(str(STL_DIR / f"{self.NAME}.stl")), self.info, motor_gearing)
+        # shaft on the z axis, boss flat on z=0 and the body toward +z (a half turn about x)
+        self.shape = multmatrix(
+            [[1, 0, 0, -self.SHAFT_X], [0, -1, 0, 0], [0, 0, -1, self.BOSS_Z], [0, 0, 0, 1]]
+        )(raw)
+        self.axle = Hole(_axle_face("axle", 0), 0, 0, self.KIND)
+        boss = Face("boss", (0, 0, 0), (1, 0, 0), (0, 1, 0), (0, 0, -1), 0)
+        self.holes = [self.axle, Hole(boss, -2, 0, "round"), Hole(boss, -4, 0, "round")]

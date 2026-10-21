@@ -11,7 +11,15 @@ import math
 from solid2 import cube, cylinder, import_stl
 
 from .assembly import VEXAssembly
-from .axles import Bearing_Flat, Nylon_Spacer_1_2in, Omni_Wheel_4in, Shaft, Shaft_Collar
+from .axles import (
+    Bearing_Flat,
+    Nylon_Spacer_1_2in,
+    Omni_Wheel_4in,
+    Shaft,
+    Shaft_Collar,
+    Traction_Wheel_4in,
+    V5_Smart_Motor,
+)
 from .holes import Face, Hole, ROUND_HOLE, UNIT, PITCH
 from .parts import PARTS_DIR, STL_DIR, part_info, tint
 
@@ -101,6 +109,64 @@ def dead_wheel_stack(span, wall):
     return stack, shaft.at(inner_face + wall)
 
 
+class _Rail:
+    """The two flanges of a U-channel rail and their middle rows of holes, found from a chassis."""
+
+    def __init__(self, chassis, side, what):
+        flange = [h for h in chassis.holes if h.face.name.startswith("flange") and h.v == 2]
+        if not flange:
+            raise ValueError(f"a {what} needs a U channel rail with a middle row of flange holes")
+        self.axis = max(range(3), key=lambda i: abs(flange[0].normal[i]))  # the axle runs along the flange normal
+        levels = sorted({round(h.position[self.axis], 3) for h in flange})
+        if len(levels) == 2:
+            if side not in ("outboard", "left", "inboard", "right"):
+                raise ValueError("side must be 'outboard' or 'inboard' for a single channel")
+            self.sign = 1 if side in ("outboard", "left") else -1
+            rail = levels
+        elif len(levels) == 4:
+            if side not in ("left", "right"):
+                raise ValueError("side must be 'left' or 'right'")
+            self.sign = 1 if side == "right" else -1
+            rail = levels[2:] if self.sign > 0 else levels[:2]
+        else:
+            raise ValueError(f"a {what} needs a U channel rail with a middle row of flange holes")
+        inner_y, outer_y = rail if self.sign > 0 else rail[::-1]
+        flange = [h for h in flange if round(h.position[self.axis], 3) in rail]
+        self.thickness = flange[0].face.thickness
+        self.span = abs(outer_y - inner_y) + self.thickness  # between the outer faces of the flanges
+
+        def row(y):
+            return {round(h.position[0], 3): h for h in flange if abs(h.position[self.axis] - y) < 0.5}
+
+        self.inner_row, self.outer_row = row(inner_y), row(outer_y)
+
+    def holes_at(self, row, centre, *steps):
+        """The flange holes `steps` pitches from `centre` along x."""
+        found = [row.get(round(centre + n * round(PITCH, 3), 3)) for n in steps]
+        if None in found:
+            raise ValueError("not enough flange holes at that position; try a different inset")
+        return found
+
+    def axle_hole(self, assembly, kind, x=None):
+        """The free `kind` axle hole facing out of the rail (nearest `x` along the rail, if given)."""
+        found = [h for h in assembly.holes if h.kind == kind and h.normal[self.axis] * self.sign > 0.99
+                 and h not in assembly.taken]
+        return min(found, key=lambda h: abs(h.position[0] - x)) if x is not None else found[0]
+
+
+def _bolt_bearing(assembly, hole_pairs, bore, side, **kwargs):
+    """Bolt a Bearing_Flat onto `hole_pairs` (flange hole, bearing screw-hole u), trying each roll."""
+    for roll in range(4):
+        bearing = Bearing_Flat(bore)
+        (first, u), *others = hole_pairs
+        try:
+            return assembly.attach(first, bearing, bearing.hole("base", u, 0), roll=roll, side=side,
+                                   also=[(h, bearing.hole("base", n, 0)) for h, n in others], **kwargs)
+        except ValueError:
+            continue
+    raise ValueError("could not bolt a bearing onto the rail")
+
+
 def place_dead_wheel_near_rear(chassis, inset=1, side="right"):
     """Mount a dead wheel through the two flanges of a U-channel rail, near its rear end.
 
@@ -116,55 +182,77 @@ def place_dead_wheel_near_rear(chassis, inset=1, side="right"):
           wheel hangs: "outboard"/"left" (away from the frame the channel is the left rail of) or
           "inboard"/"right".
     """
-    flange = [h for h in chassis.holes if h.face.name.startswith("flange") and h.v == 2]
-    if not flange:
-        raise ValueError("a dead wheel needs a U channel rail with a middle row of flange holes")
-    axis = max(range(3), key=lambda i: abs(flange[0].normal[i]))  # the axle runs along the flange normal
-    levels = sorted({round(h.position[axis], 3) for h in flange})
-    if len(levels) == 2:
-        if side not in ("outboard", "left", "inboard", "right"):
-            raise ValueError("side must be 'outboard' or 'inboard' for a single channel")
-        sign = 1 if side in ("outboard", "left") else -1
-        rail = levels
-    elif len(levels) == 4:
-        if side not in ("left", "right"):
-            raise ValueError("side must be 'left' or 'right'")
-        sign = 1 if side == "right" else -1
-        rail = levels[2:] if sign > 0 else levels[:2]
-    else:
-        raise ValueError("a dead wheel needs a U channel rail with a middle row of flange holes")
-    inner_y, outer_y = rail if sign > 0 else rail[::-1]
-    flange = [h for h in flange if round(h.position[axis], 3) in rail]
-    thickness = flange[0].face.thickness
-
-    def row(y):
-        return {round(h.position[0], 3): h for h in flange if abs(h.position[axis] - y) < 0.5}
-
-    inner_row, outer_row = row(inner_y), row(outer_y)
-    wanted = max(outer_row) - inset * PITCH
-    centre = min(outer_row, key=lambda x: abs(x - wanted))
-    pitch = round(PITCH, 3)
-    holes = []
-    for flange_row in (inner_row, outer_row):
-        pair = [flange_row.get(round(centre + dx, 3)) for dx in (-pitch, pitch)]
-        if None in pair:
-            raise ValueError("not enough flange holes at that position; try a smaller inset")
-        holes.append(pair)
-
-    def bolt(assembly, left, right):
-        for roll in range(4):
-            block = Bearing_Flat()
-            try:
-                return assembly.attach(left, block, block.hole("base", -2, 0), nut="hex", roll=roll, side="inner",
-                                       also=[(right, block.hole("base", 2, 0))])
-            except ValueError:
-                continue
-        raise ValueError("could not bolt a bearing block onto the rail")
-
+    rail = _Rail(chassis, side, "dead wheel")
+    centre = min(rail.outer_row, key=lambda x: abs(x - (max(rail.outer_row) - inset * PITCH)))
     assembled = chassis
-    for left, right in holes:
-        assembled = bolt(assembled, left, right)
+    for row in (rail.inner_row, rail.outer_row):
+        left, right = rail.holes_at(row, centre, -1, 1)
+        assembled = _bolt_bearing(assembled, [(left, -2), (right, 2)], "middle", "inner", nut="hex")
+    stack, station = dead_wheel_stack(rail.span, rail.thickness)
+    return assembled.attach(rail.axle_hole(assembled, "axle_round"), stack, station)
 
-    inner_axle = next(h for h in assembled.holes if h.kind == "axle_round" and h.normal[axis] * sign > 0.99)
-    stack, station = dead_wheel_stack(abs(outer_y - inner_y) + thickness, thickness)
-    return assembled.attach(inner_axle, stack, station)
+
+MOTOR_SCREW = 0.75  # inches: through the bearing and flange and into the motor's posts
+
+
+def motor_wheel_stack(span):
+    """A 4" wheel on a 3" capped shaft that is driven by a motor against the inner flange.
+
+    Along the shaft from its free end (which sits inside the motor): the motor's boss against the
+    frame side of the inner flange, the two flanges and `span` mm of channel, a 1/2" spacer that
+    clears the screws and nuts on the outer flange, then the wheel against the shaft's cap.
+    Returns `(stack, station)`: `station` is where the motor's boss is on the shaft.
+    """
+    shaft = Shaft(3)
+    wheel, spacer = Traction_Wheel_4in(), Nylon_Spacer_1_2in()
+    wheel_at = shaft.LENGTH - shaft.CAP - wheel.WIDTH / 2
+    spacer_at = wheel_at - wheel.WIDTH / 2 - spacer.WIDTH / 2
+    boss_at = spacer_at - spacer.WIDTH / 2 - span
+    if boss_at < 0:
+        raise ValueError("the 3 inch shaft is too short to reach the motor from this channel")
+    stack = shaft
+    for at, item in ((spacer_at, spacer), (wheel_at, wheel)):
+        stack = stack.attach(shaft.at(at), item, item.axle)
+    return stack, shaft.at(boss_at)
+
+
+def place_motor_wheel(chassis, at="front", side="outboard", motor_gearing="blue", inset=0):
+    """Mount a motor-driven 4" wheel through a U-channel rail, at its front or rear end.
+
+    The rails are as for `place_dead_wheel_near_rear`. The motor sits against the frame side of the
+    inner flange with its shaft along the middle row of flange holes. A flat bearing inside the U
+    carries the shaft: its bore is at the shaft and its two screws go through the flange into the
+    motor's two posts. A second flat bearing and a hex-nut joint carry the shaft at the outer
+    flange, then a spacer and the wheel. `inset` is how many 0.5" pitches the shaft is in from the
+    end hole of the flange row; the motor's posts are on the side of the shaft toward the middle
+    of the rail.
+    """
+    if at not in ("front", "rear"):
+        raise ValueError("at must be 'front' or 'rear'")
+    rail = _Rail(chassis, side, "motor wheel")
+    toward_middle = -1 if at == "rear" else 1
+    end = max(rail.outer_row) if at == "rear" else min(rail.outer_row)
+    centre = min(rail.outer_row, key=lambda x: abs(x - (end + toward_middle * inset * PITCH)))
+    motor = V5_Smart_Motor(motor_gearing)
+
+    inner_posts = rail.holes_at(rail.inner_row, centre, toward_middle, 2 * toward_middle)
+    assembled = _bolt_bearing(
+        chassis, [(inner_posts[0], -2), (inner_posts[1], -4)], "end", "inner", nut=None, screw=MOTOR_SCREW
+    )
+    assembled.taken = assembled.taken - set(inner_posts)  # the motor's posts use the same flange holes
+    for roll in range(4):
+        try:
+            assembled = assembled.attach(
+                inner_posts[0], motor, motor.hole("boss", -2, 0), roll=roll, side="outer", fasteners=False,
+                also=[(inner_posts[1], motor.hole("boss", -4, 0))],
+            )
+            break
+        except ValueError:
+            continue
+    else:
+        raise ValueError("could not place the motor against the rail")
+
+    outer_posts = rail.holes_at(rail.outer_row, centre, toward_middle, 2 * toward_middle)
+    assembled = _bolt_bearing(assembled, [(outer_posts[0], -2), (outer_posts[1], -4)], "end", "inner", nut="hex")
+    stack, station = motor_wheel_stack(rail.span)
+    return assembled.attach(rail.axle_hole(assembled, "axle_square", centre), stack, station)

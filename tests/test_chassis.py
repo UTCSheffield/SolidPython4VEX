@@ -42,8 +42,8 @@ def test_test_chassis_builds_with_expected_bom():
 def test_wheeled_chassis_has_a_dead_wheel_on_each_outboard_side():
     wheeled = build_test_wheeled_chassis()
     quantities = {part.sku: quantity for part, quantity in wheeled.bom()}
-    assert quantities["276-8107"] == 2 and quantities["276-1209"] == 4
-    wheels = sorted(h.position[1] for h in wheeled.holes if h.kind == "axle_square")
+    assert quantities["276-8107"] == 2 and quantities["276-1209"] == 8
+    wheels = sorted(h.position[1] for h in wheeled.holes if h.kind == "axle_square" and abs(h.face.thickness - 25.04) < 0.01)
     assert wheels[0] < 0 and wheels[1] > 292.1  # outboard of the left and right rails
 
 
@@ -263,3 +263,20 @@ def test_channel_frame_rejects_non_perpendicular_crosspiece():
     frame = ChannelFrame(left, left.mirror(axis="z", at=-23 * 6.35))
     with pytest.raises(ValueError, match="90 degrees"):
         frame.attach(C_Channel_1x2x1x25_Aluminum(), at="front", angle=45)
+
+
+def test_motor_wheel_bom_and_validation():
+    import pytest
+
+    from solidpython4vex.structure import U_Channel_2x2x2x20_Aluminum
+
+    channel = U_Channel_2x2x2x20_Aluminum().motor_wheel(at="front", side="outboard", motor_gearing="red")
+    skus = {part.sku: qty for part, qty in channel.bom()}
+    assert skus["276-4840"] == 1
+    assert skus["276-1497"] == 1
+    assert skus["276-1209"] == 2
+    assert 'red cartridge' in next(p.description for p, _ in channel.bom() if p.sku == "276-4840")
+    with pytest.raises(ValueError, match="motor_gearing"):
+        U_Channel_2x2x2x20_Aluminum().motor_wheel(motor_gearing="pink")
+    rear = U_Channel_2x2x2x20_Aluminum().motor_wheel(at="rear", side="inboard")
+    assert {p.sku for p, _ in rear.bom()} >= {"276-4840", "276-1497"}

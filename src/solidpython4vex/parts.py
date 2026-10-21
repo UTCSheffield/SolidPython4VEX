@@ -62,10 +62,10 @@ def colour_of(info):
     return next((c for words, c in COLOURS if any(w in text for w in words)), METAL)
 
 
-def tint(shape, info):
+def tint(shape, info, colour=None):
     """Tag `shape` with its catalog info and return it wrapped in the part's colour."""
     shape.part_info = info
-    return color(colour_of(info))(shape)
+    return color(colour or colour_of(info))(shape)
 
 
 def part(name):
