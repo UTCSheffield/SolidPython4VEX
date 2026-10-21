@@ -53,6 +53,7 @@ COLOURS = (
     (("spacer",), "white"),
     (("wheel",), "green"),
     (("retainer", "bearing"), "black"),
+    (("electronic", "sensor", "brain", "radio", "battery"), "gray"),
 )
 METAL = "silver"
 
