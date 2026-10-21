@@ -19,8 +19,8 @@ from OCC.Core.TopAbs import TopAbs_FACE
 from OCC.Core.TopExp import TopExp_Explorer
 from OCC.Core.TopoDS import topods
 
-NAME = re.compile(r"gear|sprocket", re.I)
-SKIP = re.compile(r"bracket|rack|worm|bevel|differential|turntable|2252_007|3880", re.I)
+NAME = re.compile(r"gear|sprocket|pinion", re.I)
+SKIP = re.compile(r"bracket|rack|worm|bevel|differential|turntable", re.I)
 
 
 def analyse(path):

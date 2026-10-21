@@ -1,10 +1,11 @@
 """Shafts and the parts that ride on them, with typed axle holes.
 
 Every part is built with its axle along z, centred on the origin. A part's `axle` hole is
-"axle_square" (wheel, shaft) or "axle_round" (bearing block, collar, spacer); all of these here are
-standard 1/8" size (class "axle"). `Shaft.at(mm)` is a place on the shaft, measured from its free
+"axle_square" (wheel, shaft) or "axle_round" (bearing block, collar, spacer); most here are
+standard 1/8" size (class "axle"); `HS_Shaft` and the gears and sprockets in `Disc` use the 1/4" size. `Shaft.at(mm)` is a place on the shaft, measured from its free
 end, where `shaft.attach(shaft.at(mm), part, part.axle)` puts a part coaxially.
 """
+import re
 from .assembly import VEXAssembly
 from .holes import Face, Hole, INCH, PITCH
 from .parts import CATALOG, nominal_inches, part, part_info
@@ -49,18 +50,52 @@ class Shaft(VEXAssembly):
         return Hole(face, 0, 0, kind)
 
 
+class HS_Shaft(Shaft):
+    """Uncapped 1/4" high-strength shaft along +z from z=0 (one end) to its other end.
+
+    `HS_Shaft(4)` is the 4" shaft; the catalog has 2", 3", 4" and 24".
+    """
+
+    CAP = 0.0
+    _NAMES = {
+        int(name.split("_")[2]): name for name in CATALOG if re.fullmatch(r"276_\d+_\d+_High_Strength_Shaft", name)
+    }
+
+    @classmethod
+    def length_of(cls, inches):
+        return inches * INCH - (0 if inches == 24 else 1.0)  # the STEP models are 1 mm short, except the 24"
+
+    def __init__(self, inches=4):
+        if inches not in self._NAMES:
+            raise ValueError(f"no {inches} inch high-strength shaft; choose from {sorted(self._NAMES)}")
+        self.inches = inches
+        self.info = part_info(self._NAMES[inches])
+        self.LENGTH = self.length_of(inches)
+        shape = part(self._NAMES[inches])
+        self.shape = shape.translate(0, 0, self.LENGTH / 2) if inches == 24 else shape  # the 24" is centred
+        self.holes = ()
+
+    def at(self, mm, kind="hs_axle_square"):
+        return super().at(mm, kind)
+
+
 class _AxlePart(VEXAssembly):
     NAME = ""
     WIDTH = 0.0  # along the axle
     KIND = "axle_round"
     AXLE_ALONG_Y = True  # the STEP model has its axle along y
+    AXLE_ALONG_X = False  # or along x (when neither is set the axle is along z)
     CENTRE = None  # where the axle crosses the middle of the part in the STEP model, if not the origin
 
     def __init__(self):
         shape = part(self.NAME)
         if self.CENTRE:
             shape = shape.translate(*(-c for c in self.CENTRE))
-        self.shape = shape.rotate((90, 0, 0)) if self.AXLE_ALONG_Y else shape
+        if self.AXLE_ALONG_X:
+            shape = shape.rotate((0, -90, 0))
+        elif self.AXLE_ALONG_Y:
+            shape = shape.rotate((90, 0, 0))
+        self.shape = shape
         self.axle = Hole(_axle_face("axle", self.WIDTH), 0, 0, self.KIND)
         self.holes = [self.axle]
 
@@ -83,6 +118,41 @@ class Traction_Wheel_4in(_AxlePart):
     AXLE_ALONG_Y = False
     CENTRE = (-37.63, 24.29, 3.39)
     DIAMETER = 101.6
+
+
+def _catalog_name(sku):
+    return next(info.name for info in CATALOG.values() if info.sku == sku)
+
+
+# (class name, sku, STEP axle axis, STEP centre of the wheel, width along the axle in mm, hole kind),
+# measured from the meshes. The 4" omni and traction wheels above predate this table.
+_WHEELS = [
+    ("Traction_Wheel_4in_HS", "276-1497-110", "z", (29.3, 56.94, 68.4), 22.31, "hs_axle_square"),
+    ("Traction_Wheel_2_75in", "276-1496", "z", (25.11, 39.07, 36.92), 19.62, "axle_square"),
+    ("Anti_Static_Wheel_2_75in", "276-8098", "y", (-0.05, -0.03, -0.02), 25.66, "axle_square"),
+    ("Omni_Wheel_2_75in", "276-8106", "y", (-0.23, -0.54, 0.1), 20.14, "axle_square"),
+    ("Anti_Static_Wheel_3_25in", "276-7771", "y", (-1.55, 0.06, -0.65), 27.54, "axle_square"),
+    ("Omni_Wheel_3_25in", "276-8026", "y", (0, -0.02, 0.01), 24.87, "axle_square"),
+    ("Anti_Static_Wheel_4in", "276-8103", "y", (0, 0.14, 0.2), 27.83, "axle_square"),
+    ("Omni_Wheel_2in", "276-9044", "x", (0.01, 0, 0), 15.9, "axle_square"),
+    ("Mecanum_Wheel_2in_Left", "217-7400-left", "z", (0, 0, 0), 38.67, "axle_square"),
+    ("Mecanum_Wheel_2in_Right", "217-7400-right", "z", (0, 0, 0), 38.46, "axle_square"),
+    ("Mecanum_Wheel_2in_V2_Left", "276-9041-801", "z", (0, 0, 0), 27.55, "axle_square"),
+    ("Mecanum_Wheel_2in_V2_Right", "276-9041-802", "z", (0, 0, 0), 27.54, "axle_square"),
+    ("Mecanum_Wheel_4in", "276-1447", "y", (0.08, 0.14, -0.42), 48.36, "axle_square"),
+    ("Intake_Rollers", "276-1499", "z", (0, 0, 0), 12.7, "axle_square"),
+]
+for _cls, _sku, _axis, _centre, _width, _kind in _WHEELS:
+    globals()[_cls] = type(_cls, (_AxlePart,), {
+        "__doc__": f"{_catalog_name(_sku)} with its axle hole at the origin (axle along z).",
+        "__module__": __name__,
+        "NAME": _catalog_name(_sku),
+        "WIDTH": _width,
+        "KIND": _kind,
+        "AXLE_ALONG_Y": _axis == "y",
+        "AXLE_ALONG_X": _axis == "x",
+        "CENTRE": _centre if any(_centre) else None,
+    })
 
 
 class Shaft_Collar(_AxlePart):

@@ -12,6 +12,7 @@ from solid2 import cube, cylinder, import_stl
 
 from .assembly import VEXAssembly
 from .axles import (
+    _axle_face,
     Bearing_Flat,
     Nylon_Spacer_1_2in,
     Omni_Wheel_4in,
@@ -64,6 +65,11 @@ class Disc(VEXAssembly):
         self.holes = [Hole(self.faces["front"], x / UNIT, -y / UNIT, "round") for x, y in pts] + [
             Hole(self.faces["back"], x / UNIT, y / UNIT, "round") for x, y in pts
         ]
+        # the bore is the 1/4" square cut unless the mesh has a round one; the high-strength gears
+        # and the 6P sprockets use the 1/4" size, the rest the 1/8" one
+        strong = not spec["round_bore"] or "High_Strength" in name
+        self.axle = Hole(_axle_face("axle", t), 0, 0, ("hs_axle_" if strong else "axle_") + ("round" if spec["round_bore"] else "square"))
+        self.holes.append(self.axle)
 
         blank = import_stl(str(STL_DIR / f"{name}.stl")).translate([-c for c in spec["centre"]])
         rot = _AXIS_ROTATION[spec["axis"]]

@@ -61,3 +61,7 @@ python scripts/step_to_stl.py <step_dir> src/solidpython4vex/parts/stl
 - [openscad-step-reader](https://github.com/agordon/openscad-step-reader)
 - [openscad-vex-library](https://github.com/UTCSheffield/openscad-vex-library)
 - SolidPython2 extensions (as used for BOSL) are the integration path; XRP support may fit too.
+
+## Axle test
+
+`examples/test_axles.py` threads every wheel, gear, sprocket, spacer and collar we have built onto 6" capped shafts (standard 1/8" parts) and a 24" high-strength shaft (1/4" parts) and writes `build/test_axles.scad`. New parts appear in it automatically as their classes are added.

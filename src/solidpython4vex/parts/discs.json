@@ -63,6 +63,20 @@
    "grid_r2": 5
   }
  },
+ "276_2251_12T_High_Strength_Metal_Pinion": {
+  "axis": "y",
+  "thickness": 12.7,
+  "diameter": 14.8,
+  "centre": [
+   -0.0,
+   -0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
  "276_2252_003_6T_High_Strength_Sprocket_HS_Bore": {
   "axis": "z",
   "thickness": 13.34,
@@ -117,6 +131,20 @@
   "round_bore": [],
   "pattern": {
    "grid_r2": 4
+  }
+ },
+ "276_2252_007_30T_High_Strength_Sprocket_HS_Bore": {
+  "axis": "x",
+  "thickness": 13.34,
+  "diameter": 161.0,
+  "centre": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "round_bore": [],
+  "pattern": {
+   "grid_r2": 5
   }
  },
  "276_3438_84T_High_Strength_Gear": {
@@ -205,6 +233,22 @@
    0.0,
    0.0,
    0.0
+  ],
+  "round_bore": [
+   4.5
+  ],
+  "pattern": {
+   "grid_r2": 0
+  }
+ },
+ "276_3880_30T_High_Strength_Sprocket": {
+  "axis": "x",
+  "thickness": 15.9,
+  "diameter": 98.85,
+  "centre": [
+   0.0,
+   0.0,
+   -0.0
   ],
   "round_bore": [
    4.5
