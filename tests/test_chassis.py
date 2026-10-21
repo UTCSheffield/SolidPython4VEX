@@ -62,7 +62,7 @@ def test_dead_wheel_on_a_laid_flat_frame_adds_the_parts():
     assert quantities["228-3510"] == 1  # the cap holds the wheel, so only the inboard end needs a collar
     assert quantities["276-1209"] == 2
     assert quantities["276-8107"] == 1
-    assert quantities["275-1066-002"] == 1  # 1/4" spacer clears the screws and nuts
+    assert quantities["275-1066-004"] == 1  # 1/2" spacer clears the screws and nuts
     assert quantities["276-7285"] == 2
     assert quantities["276-6483"] == 4
     assert quantities["276-4991"] == 4  # corner screws
@@ -91,7 +91,7 @@ def test_dead_wheel_shaft_runs_across_the_rail_with_the_wheel_outboard():
     assert wheel.position[1] > 306.6  # beyond the outer flange
     assert {round(h.normal[1]) for h in axle if h.position[1] < 306} == {1, -1}  # bearings face each other
     spacer_gap = wheel.position[1] - 12.52 - 306.6
-    assert spacer_gap == pytest.approx(6.35, abs=0.01)  # wheel sits one 1/4" spacer beyond the outer flange
+    assert spacer_gap == pytest.approx(12.7, abs=0.01)  # wheel sits one 1/2" spacer beyond the outer flange
     assert wheel.position[1] == max(h.position[1] for h in axle if h.kind == "axle_square")
 
 

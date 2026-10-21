@@ -199,8 +199,9 @@ def four_post_hardware(hole):
     retainer = import_stl(str(PARTS_DIR / "stl" / f"{retainer_info.name}.stl"))
     retainer.part_info = retainer_info
     frame = columns(hole.face.u_axis, n, hole.face.v_axis)
+    # the retainer's plate sits against the metal and its 3.17 mm posts go up into the holes
     offset = tuple(
-        p + axis * (-hole.face.thickness / 2 - 3.17)
+        p + axis * (-hole.face.thickness / 2)
         for p, axis in zip(hole.position, n)
     )
     matrix = [[*frame[i], offset[i]] for i in range(3)] + [[0, 0, 0, 1]]
