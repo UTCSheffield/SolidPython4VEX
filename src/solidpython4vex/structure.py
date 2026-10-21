@@ -2,7 +2,7 @@ from solid2 import cube
 
 from .assembly import VEXAssembly
 from .holes import Face, row, staggered_row, PITCH, UNIT
-from .parts import part_info
+from .parts import part_info, tint
 
 
 class Angle(VEXAssembly):
@@ -37,7 +37,7 @@ class Angle(VEXAssembly):
         for h in self.holes:
             body -= h.cutter(depth=self.T * 3)
         self.shape = body
-        self.shape.part_info = self.info
+        self.shape = tint(self.shape, self.info)
 
 
 class Channel(VEXAssembly):
@@ -91,7 +91,7 @@ class Channel(VEXAssembly):
         for hh in self.holes:
             body -= hh.cutter(depth=T * 3)
         self.shape = body
-        self.shape.part_info = self.info
+        self.shape = tint(self.shape, self.info)
 
 
 def C_Channel(w, h, holes, name=None):

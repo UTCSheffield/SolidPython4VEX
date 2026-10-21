@@ -13,7 +13,7 @@ from solid2 import cube, cylinder, import_stl
 from .assembly import VEXAssembly
 from .axles import Bearing_Flat, Nylon_Spacer_1_2in, Omni_Wheel_4in, Shaft, Shaft_Collar
 from .holes import Face, Hole, ROUND_HOLE, UNIT, PITCH
-from .parts import PARTS_DIR, STL_DIR, part_info
+from .parts import PARTS_DIR, STL_DIR, part_info, tint
 
 SPECS = json.load(open(PARTS_DIR / "discs.json"))
 BORE_SQUARE = 6.35
@@ -70,7 +70,7 @@ class Disc(VEXAssembly):
         else:
             blank -= cube([BORE_SQUARE, BORE_SQUARE, depth], center=True)
         self.shape = blank
-        self.shape.part_info = self.info
+        self.shape = tint(self.shape, self.info)
 
 def disc_names():
     return sorted(SPECS)

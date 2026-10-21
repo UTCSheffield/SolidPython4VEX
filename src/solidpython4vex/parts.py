@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
-from solid2 import import_stl
+from solid2 import color, import_stl
 
 PARTS_DIR = Path(__file__).parent / "parts"
 STL_DIR = PARTS_DIR / "stl"
@@ -47,11 +47,30 @@ def nominal_inches(name):
     return float(whole) / float(denominator) if denominator else float(whole)
 
 
+# first match wins; anything else is bare metal. STL files carry no colour, so it is added in
+# the SCAD as a wrapper around the part, which keeps its `.part_info` for the BOM.
+COLOURS = (
+    (("spacer",), "white"),
+    (("wheel",), "green"),
+    (("retainer", "bearing"), "black"),
+)
+METAL = "silver"
+
+
+def colour_of(info):
+    text = f"{info.name} {info.description}".lower()
+    return next((c for words, c in COLOURS if any(w in text for w in words)), METAL)
+
+
+def tint(shape, info):
+    """Tag `shape` with its catalog info and return it wrapped in the part's colour."""
+    shape.part_info = info
+    return color(colour_of(info))(shape)
+
+
 def part(name):
     """Load a part model converted from the VEX STEP library.
 
     The returned object carries its catalog metadata as `.part_info`.
     """
-    shape = import_stl(str(STL_DIR / f"{name}.stl"))
-    shape.part_info = part_info(name)
-    return shape
+    return tint(import_stl(str(STL_DIR / f"{name}.stl")), part_info(name))

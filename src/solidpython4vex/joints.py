@@ -13,7 +13,7 @@ from solid2 import cylinder, import_stl, multmatrix
 
 from .assembly import VEXAssembly
 from .holes import columns, mat_mul, mat_vec, transpose, INCH
-from .parts import CATALOG, PARTS_DIR, part_info
+from .parts import CATALOG, PARTS_DIR, part, part_info, tint
 
 SCREW_D = 0.164 * INCH
 HEAD_D, HEAD_H = 6.3, 2.0
@@ -81,8 +81,7 @@ def _norm(v):
 
 
 def _tag(shape, info):
-    shape.part_info = info
-    return shape
+    return tint(shape, info)
 
 
 def screw_shape(info, length_mm, z_from, z_to):
@@ -196,8 +195,7 @@ def four_post_hardware(hole):
     )
 
     retainer_info = _by_sku("276-6483")
-    retainer = import_stl(str(PARTS_DIR / "stl" / f"{retainer_info.name}.stl"))
-    retainer.part_info = retainer_info
+    retainer = part(retainer_info.name)
     frame = columns(hole.face.u_axis, n, hole.face.v_axis)
     # the retainer's plate sits against the metal and its 3.17 mm posts go up into the holes
     offset = tuple(
