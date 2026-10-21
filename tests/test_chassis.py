@@ -1,6 +1,8 @@
+import pytest
+
 from pathlib import Path
 
-from examples.test_chassis import build_test_chassis
+from examples.test_chassis import build_test_chassis, build_test_wheeled_chassis
 
 
 def test_render_writes_relative_retainers_import_paths(tmp_path):
@@ -24,16 +26,96 @@ def test_render_writes_relative_retainers_import_paths(tmp_path):
 def test_test_chassis_builds_with_expected_bom():
     chassis = build_test_chassis()
     quantities = {part.sku: quantity for part, quantity in chassis.bom()}
-    assert quantities["276-2289"] == 2
+    assert quantities["276-2288"] == 2
     assert quantities["276-7285"] == 2
     assert quantities["276-4991"] == 4
     assert quantities["275-1028"] == 4
     assert quantities["276-6483"] == 4
+    assert "276-8107" not in quantities
     assert len(chassis.taken) == 40
     scad = chassis.shape.as_scad()
-    assert scad.startswith("multmatrix")
+    assert "multmatrix" in scad
     assert "12.4" in scad  # the lowest channel flange is on the ground plane
     assert scad.count("276_6483_4_Post_Hex_Nut_Retainer.stl") == 4
+
+
+def test_wheeled_chassis_has_a_dead_wheel_on_each_outboard_side():
+    wheeled = build_test_wheeled_chassis()
+    quantities = {part.sku: quantity for part, quantity in wheeled.bom()}
+    assert quantities["276-8107"] == 2 and quantities["276-1209"] == 4
+    wheels = sorted(h.position[1] for h in wheeled.holes if h.kind == "axle_square")
+    assert wheels[0] < 0 and wheels[1] > 292.1  # outboard of the left and right rails
+
+
+def test_dead_wheel_on_a_single_channel_needs_an_outboard_or_inboard_side():
+    import pytest
+
+    from solidpython4vex.structure import U_Channel_2x2x2x20_Aluminum
+
+    with pytest.raises(ValueError, match="outboard"):
+        U_Channel_2x2x2x20_Aluminum().dead_wheel(side="front")
+
+
+def test_dead_wheel_on_a_laid_flat_frame_adds_the_parts():
+    quantities = {part.sku: quantity for part, quantity in build_test_chassis().dead_wheel(side="right").bom()}
+    assert quantities["228-2500-2226"] == 1
+    assert quantities["228-3510"] == 1  # the cap holds the wheel, so only the inboard end needs a collar
+    assert quantities["276-1209"] == 2
+    assert quantities["276-8107"] == 1
+    assert quantities["275-1066-002"] == 1  # 1/4" spacer clears the screws and nuts
+    assert quantities["276-7285"] == 2
+    assert quantities["276-6483"] == 4
+    assert quantities["276-4991"] == 4  # corner screws
+    assert quantities["276-4992"] == 4  # bearing screws, through the plate and flange
+    assert quantities["275-1028"] == 8  # 4 corner nuts + 4 block nuts
+
+
+def test_dead_wheel_blocks_bolt_to_both_flanges_on_the_middle_row():
+    plain = build_test_chassis()
+    wheeled = build_test_chassis().dead_wheel(side="right")
+    mounts = {h for h in wheeled.taken - plain.taken if not h.is_axle}
+    assert len(mounts) == 8  # per block: two flange holes and two base holes
+    flange = {h for h in mounts if h.face.name.startswith("flange")}
+    assert len(flange) == 4
+    assert {round(h.position[1], 1) for h in flange} == {278.4, 305.8}  # both flanges of the +y rail
+    assert {round(h.position[2], 1) for h in mounts} == {11.6}  # middle flange row
+    assert {round(h.position[0], 1) for h in flange} == {88.9, 114.3}  # the last flange hole is used
+
+
+def test_dead_wheel_shaft_runs_across_the_rail_with_the_wheel_outboard():
+    wheeled = build_test_chassis().dead_wheel(side="right")
+    axle = sorted((h for h in wheeled.holes if h.is_axle), key=lambda h: h.position[1])
+    assert {round(h.position[0], 1) for h in axle} == {101.6}  # one axle line
+    assert {round(h.position[2], 1) for h in axle} == {11.6}
+    wheel, = [h for h in axle if h.kind == "axle_square"]
+    assert wheel.position[1] > 306.6  # beyond the outer flange
+    assert {round(h.normal[1]) for h in axle if h.position[1] < 306} == {1, -1}  # bearings face each other
+    spacer_gap = wheel.position[1] - 12.52 - 306.6
+    assert spacer_gap == pytest.approx(6.35, abs=0.01)  # wheel sits one 1/4" spacer beyond the outer flange
+    assert wheel.position[1] == max(h.position[1] for h in axle if h.kind == "axle_square")
+
+
+def test_left_side_dead_wheel_uses_the_other_rail():
+    plain = build_test_chassis()
+    wheeled = plain.dead_wheel(side="left")
+    mounts = {h for h in wheeled.taken - plain.taken if not h.is_axle}
+    flange = {h for h in mounts if h.face.name.startswith("flange")}
+    assert len(flange) == 4
+    assert all(abs(h.position[1]) < 15 for h in flange)  # the two flanges of the y=0 rail
+    wheel, = [h for h in wheeled.holes if h.kind == "axle_square"]
+    assert wheel.position[1] < -14.5
+
+
+def test_dead_wheel_needs_a_u_channel_rail():
+    import pytest
+
+    from solidpython4vex.structure import C_Channel_1x2x1x25_Aluminum, ChannelFrame
+
+    frame = ChannelFrame(C_Channel_1x2x1x25_Aluminum())
+    frame.attach(C_Channel_1x2x1x25_Aluminum(), at="front", hardware="4-post")
+    frame.attach(C_Channel_1x2x1x25_Aluminum(), at="rear", hardware="4-post")
+    with pytest.raises(ValueError, match="U channel"):
+        frame.lay_flat().dead_wheel()
 
 
 def test_front_and_rear_crosspieces_attach_at_90_degrees():

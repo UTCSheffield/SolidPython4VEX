@@ -121,6 +121,13 @@ def attach(a, hole_a, b, hole_b, *, also=(), side="outer", roll=0, nut="nylock",
     fasteners  False places the parts only, so you can add hardware yourself.
     """
     fa, fb = hole_a.face, hole_b.face
+    for ha, hb in [(hole_a, hole_b), *also]:
+        if ha.size_class != hb.size_class:
+            raise ValueError(f"cannot join a {ha.kind} hole to a {hb.kind} hole ({ha.size_class} vs {hb.size_class})")
+    # axle holes are coaxial: no wall contact and no screws; the shaft station sets the position
+    axle = hole_a.is_axle
+    if axle:
+        fasteners = False
     s = 1 if side == "outer" else -1
     n = tuple(s * c for c in fa.normal)
     # right-handed target frame for b's (u, v, -normal) frame
@@ -131,7 +138,7 @@ def attach(a, hole_a, b, hole_b, *, also=(), side="outer", roll=0, nut="nylock",
     target = columns(t_u, t_v, n)
     source = columns(fb.u_axis, fb.v_axis, tuple(-c for c in fb.normal))
     R = mat_mul(target, transpose(source))
-    gap = (fa.thickness + fb.thickness) / 2
+    gap = 0 if axle else (fa.thickness + fb.thickness) / 2
     pb = mat_vec(R, hole_b.position)
     t = tuple(pa + gap * nc - c for pa, nc, c in zip(hole_a.position, n, pb))
 

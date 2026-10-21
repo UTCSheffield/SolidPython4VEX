@@ -1,4 +1,5 @@
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -35,6 +36,15 @@ CATALOG = load_catalog()
 
 def part_info(name):
     return CATALOG.get(name) or PartInfo(name=name)
+
+
+def nominal_inches(name):
+    """The size in the catalog description, e.g. '3" Capped Shaft' -> 3.0, '1/4" Nylon Spacer' -> 0.25."""
+    match = re.match(r'\s*(\d+(?:\.\d+)?)(?:/(\d+))?"', part_info(name).description)
+    if not match:
+        raise ValueError(f"{name} has no size in its catalog description")
+    whole, denominator = match.groups()
+    return float(whole) / float(denominator) if denominator else float(whole)
 
 
 def part(name):

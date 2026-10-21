@@ -1,4 +1,17 @@
 from .assembly import VEXAssembly
+from .axles import Bearing_Block, Bearing_Flat, Nylon_Spacer_1_2in, Nylon_Spacer_1_4in, Nylon_Spacer_1_8in, Nylon_Spacer_3_8in, Omni_Wheel_4in, Shaft, Shaft_Collar
+from .drive import dead_wheel_stack, place_dead_wheel_near_rear
 from .parts import part
 
-__all__ = ["VEXAssembly", "part"]
+__all__ = [
+    "Bearing_Block",
+    "Bearing_Flat",
+    "Nylon_Spacer_1_8in",
+    "Omni_Wheel_4in",
+    "Shaft",
+    "Shaft_Collar",
+    "VEXAssembly",
+    "dead_wheel_stack",
+    "part",
+    "place_dead_wheel_near_rear",
+]

@@ -42,6 +42,27 @@ class VEXAssembly:
 
         return attach(self, hole, other, other_hole, **kwargs)
 
+    def dead_wheel(self, at="rear", side="right", inset=1):
+        """Return this U channel or laid-flat frame with a 4" omni dead wheel on a rail (see drive.py)."""
+        from .drive import place_dead_wheel_near_rear
+
+        if at != "rear":
+            raise ValueError("dead wheels can currently only be placed at the 'rear'")
+        wheeled = place_dead_wheel_near_rear(self, inset=inset, side=side)
+        # keep the channel's size attributes so the result can still go into a ChannelFrame
+        for name in ("kind", "w", "h", "hole_count", "length", "outer_width", "flange_len"):
+            if hasattr(self, name):
+                setattr(wheeled, name, getattr(self, name))
+        return wheeled
+
+    def add(self, other):
+        """Return a new assembly containing this assembly and `other`."""
+        combined = VEXAssembly()
+        combined.shape = self.shape + other.shape
+        combined.holes = list(self.holes) + list(other.holes)
+        combined.taken = set(self.taken) | set(other.taken)
+        return combined
+
     def mirror(self, axis="x", at=0):
         """Return this assembly reflected across the plane `axis = at`, including its holes."""
         from solid2 import multmatrix

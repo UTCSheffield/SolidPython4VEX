@@ -12,10 +12,21 @@ def build_test_chassis():
     return frame.lay_flat()
 
 
+def build_test_wheeled_chassis():
+    channel = U_Channel_2x2x2x20_Aluminum()
+    channel = channel.dead_wheel(at="rear", side="outboard")
+    frame = ChannelFrame(channel)
+    frame.attach(C_Channel_1x2x1x25_Aluminum(), at="front", hardware="4-post")
+    frame.attach(C_Channel_1x2x1x25_Aluminum(), at="rear", hardware="4-post")
+    return frame.lay_flat()
+
+
 if __name__ == "__main__":
-    chassis = build_test_chassis()
-    output = Path(__file__).resolve().parents[1] / "build" / "test_chassis.scad"
-    output.parent.mkdir(parents=True, exist_ok=True)
-    chassis.render(output)
-    print(f"Wrote {output}")
-    print(chassis.bom_csv())
+    build = Path(__file__).resolve().parents[1] / "build"
+    build.mkdir(parents=True, exist_ok=True)
+    for name, make in (("test_chassis", build_test_chassis), ("test_wheeled_chassis", build_test_wheeled_chassis)):
+        chassis = make()
+        output = build / f"{name}.scad"
+        chassis.render(output)
+        print(f"Wrote {output}")
+        print(chassis.bom_csv())

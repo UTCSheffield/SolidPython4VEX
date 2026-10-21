@@ -4,6 +4,7 @@ Hole positions are integer (u, v) coordinates on a face, in UNIT steps. UNIT is 
 0.5" hole pitch, so the half-pitch-staggered rows of channels are plain integers
 (a 0.5" pitch is a step of 2 in u).
 """
+import math
 from dataclasses import dataclass
 
 from solid2 import cube, cylinder
@@ -13,6 +14,20 @@ UNIT = 0.25 * INCH
 PITCH = 2 * UNIT
 SQUARE_HOLE = 0.182 * INCH
 ROUND_HOLE = 4.2  # mounting holes in gears and sprockets
+
+# Hole kinds. Two holes can only be joined when their size class matches:
+#   "grid"    the 0.5" grid of square holes (nut retainers fit exactly) and round gear holes
+#   "axle"    standard 1/8" shafts, square or round (bearing) holes
+#   "hs_axle" high-strength 1/4" shafts, square or round (bearing) holes
+KIND_CLASS = {
+    "square": "grid",
+    "round": "grid",
+    "axle_square": "axle",
+    "axle_round": "axle",
+    "hs_axle_square": "hs_axle",
+    "hs_axle_round": "hs_axle",
+}
+AXLE_SQUARE_SIDE = {"axle": 0.125 * INCH, "hs_axle": 0.25 * INCH}
 
 
 def mat_vec(R, v):
@@ -69,7 +84,19 @@ class Hole:
     face: Face
     u: float  # integer on channels; gears and sprockets may use fractions of UNIT
     v: float
-    kind: str = "square"  # or "round"
+    kind: str = "square"  # any key of KIND_CLASS
+
+    def __post_init__(self):
+        if self.kind not in KIND_CLASS:
+            raise ValueError(f"unknown hole kind {self.kind!r}; use one of {sorted(KIND_CLASS)}")
+
+    @property
+    def size_class(self):
+        return KIND_CLASS[self.kind]
+
+    @property
+    def is_axle(self):
+        return self.size_class != "grid"
 
     @property
     def position(self):
@@ -84,11 +111,13 @@ class Hole:
 
     def cutter(self, depth=10, size=None):
         """Cube (square hole) or cylinder (round hole) centred on the hole, long along the face normal."""
-        if self.kind == "round":
+        if self.kind == "round" or self.kind.endswith("_round"):
+            if size is None:
+                size = ROUND_HOLE if self.kind == "round" else AXLE_SQUARE_SIDE[self.size_class] * math.sqrt(2)
             axis = max(range(3), key=lambda i: abs(self.normal[i]))
             rot = {0: (0, 90, 0), 1: (-90, 0, 0), 2: (0, 0, 0)}[axis]
-            return cylinder(d=size or ROUND_HOLE, h=depth, center=True, _fn=24).rotate(rot).translate(self.position)
-        size = size or SQUARE_HOLE
+            return cylinder(d=size, h=depth, center=True, _fn=24).rotate(rot).translate(self.position)
+        size = size or (SQUARE_HOLE if self.kind == "square" else AXLE_SQUARE_SIDE[self.size_class])
         dims = [size if abs(n) == 0 else depth for n in self.normal]
         return cube(dims, center=True).translate(self.position)
 
