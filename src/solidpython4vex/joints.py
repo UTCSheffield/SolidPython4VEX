@@ -62,6 +62,16 @@ def choose_screw(stack_mm, nut_mm):
     return length, table[length]
 
 
+def choose_pocket_screw(depth_mm):
+    """Longest 8-32 screw that fits in a wall plus blind pocket `depth_mm` deep."""
+    table = screw_table()
+    fits = [length for length in table if length * INCH <= depth_mm + 1e-6]
+    if not fits:
+        raise ValueError(f"No 8-32 screw short enough for {depth_mm:.1f} mm")
+    length = max(fits)
+    return length, table[length]
+
+
 def _place(shape, origin, z_axis):
     """Move shape built along +z so +z points along z_axis, at origin."""
     ref = (1.0, 0.0, 0.0) if abs(z_axis[0]) < 0.9 else (0.0, 1.0, 0.0)
@@ -109,7 +119,7 @@ def _rotation_about(axis, quarter_turns):
 
 
 def attach(a, hole_a, b, hole_b, *, also=(), side="outer", roll=0, nut="nylock", retainer=False,
-           screw=None, fasteners=True):
+           screw=None, fasteners=True, pocket=None):
     """Return a new assembly: `b` joined to `a` at hole_a/hole_b.
 
     side    "outer": b sits on the outward face of hole_a's wall; "inner": inside it.
@@ -118,6 +128,8 @@ def attach(a, hole_a, b, hole_b, *, also=(), side="outer", roll=0, nut="nylock",
     nut     key of NUTS, or None for no nut. retainer=True adds a nut retainer per hole.
     screw   a catalog screw length in inches; default is chosen from the stack thickness.
     fasteners  False places the parts only, so you can add hardware yourself.
+    pocket  depth in mm of blind screw pockets in b's holes. Screws are then driven from the far
+            side of a into b (head under a's wall, no nut), as for the V5 brain.
     """
     fa, fb = hole_a.face, hole_b.face
     for ha, hb in [(hole_a, hole_b), *also]:
@@ -153,7 +165,13 @@ def attach(a, hole_a, b, hole_b, *, also=(), side="outer", roll=0, nut="nylock",
             raise ValueError(f"holes do not line up ({err:.2f} mm apart): {ha} / {hb}")
 
     parts = [a.shape, multmatrix([[*R[i], t[i]] for i in range(3)] + [[0, 0, 0, 1]])(b.shape)]
-    if fasteners:
+    if fasteners and pocket is not None:
+        length_in, screw_info = choose_pocket_screw(fa.thickness + pocket)
+        for ha, _ in pairs:
+            head_z = fa.thickness / 2
+            items = screw_shape(screw_info, length_in * INCH, head_z - length_in * INCH, head_z)
+            parts.append(_place(items, tuple(ha.position), tuple(-c for c in n)))
+    elif fasteners:
         stack = fa.thickness + fb.thickness
         nut_t = NUTS[nut].thickness if nut else 0
         length_in, screw_info = choose_screw(stack, nut_t) if screw is None else (screw, screw_table()[screw])

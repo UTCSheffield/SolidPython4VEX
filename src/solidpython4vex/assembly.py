@@ -36,11 +36,22 @@ class VEXAssembly:
     def hole(self, face, u, v):
         return next(h for h in self.holes if h.face.name == face and h.u == u and h.v == v)
 
-    def attach(self, hole, other, other_hole, **kwargs):
-        """Join `other` to this assembly at `hole`/`other_hole`, adding fasteners (see joints.attach)."""
+    mount_faces = {}
+
+    def attach(self, *args, at=None, **kwargs):
+        """Join `other` to this assembly with fasteners.
+
+        `attach(hole, other, other_hole, ...)` is the hole-to-hole form (see joints.attach);
+        `attach(part, at="middle", inset=0, hardware="screw")` finds the holes itself
+        (see electronics.mount).
+        """
+        if len(args) == 1:
+            from .electronics import mount
+
+            return mount(self, args[0], at=at or "middle", **kwargs)
         from .joints import attach
 
-        return attach(self, hole, other, other_hole, **kwargs)
+        return attach(self, *args, **kwargs)
 
     def dead_wheel(self, at="rear", side="right", inset=1):
         """Return this U channel or laid-flat frame with a 4" omni dead wheel on a rail (see drive.py)."""

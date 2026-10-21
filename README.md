@@ -65,3 +65,7 @@ python scripts/step_to_stl.py <step_dir> src/solidpython4vex/parts/stl
 ## Axle test
 
 `examples/test_axles.py` threads every wheel, gear, sprocket, spacer and collar we have built onto 6" capped shafts (standard 1/8" parts) and a 24" high-strength shaft (1/4" parts) and writes `build/test_axles.scad`. New parts appear in it automatically as their classes are added.
+
+## Robot test
+
+`examples/test_robot.py` builds the wheeled chassis and adds a 5x25 steel plate across the rails, the V5 brain (its inner four holes, 1/4" screws from under the plate into the blind pockets, via `attach(..., pocket=6.0)`), a battery clip carrying the battery, and the radio, and writes `build/test_robot.scad`. The radio is only positioned (its mounting holes are not modelled), and the battery is drawn in the clip's own coordinates, so check both in a render.
