@@ -3,7 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from solidpython4vex.electronics import Plate_5x25_Steel, V5_Robot_Brain, free_holes
+from solidpython4vex.electronics import V5_Robot_Brain, free_holes
+from solidpython4vex.structure import Plate_5x25_Steel
 
 
 def _robot():

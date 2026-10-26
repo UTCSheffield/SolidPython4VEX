@@ -26,7 +26,7 @@ if not __package__:  # run as a file: python src/solidpython4vex/coverage.py
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from solidpython4vex.axles import Bearing_Block, Bearing_Flat, HS_Shaft, Shaft, V5_Smart_Motor, _AxlePart
-from solidpython4vex.drive import Disc, disc_names
+from solidpython4vex.motion import Disc, disc_names
 from solidpython4vex.joints import NUTS, RETAINER_SKU, screw_table
 from solidpython4vex.parts import CATALOG, nominal_inches
 from solidpython4vex.structure import Angle, C_Channel_1x2x1x25_Aluminum, _CatalogChannel
@@ -186,8 +186,8 @@ def survey():
 # What to do for each category: (how to fix it, an existing class to copy)
 ACTIONS = {
     "gear": ("Add Disc specs for the unbuilt gears with scripts/extract_disc_holes.py (racks, bevels, "
-             "worms, cams and joints need their own classes)", "drive.Disc"),
-    "sprocket": ("Add Disc specs for the unbuilt sprockets with scripts/extract_disc_holes.py", "drive.Disc"),
+             "worms, cams and joints need their own classes)", "motion.Disc"),
+    "sprocket": ("Add Disc specs for the unbuilt sprockets with scripts/extract_disc_holes.py", "motion.Disc"),
     "wheel": ("One _AxlePart subclass each: NAME, WIDTH, KIND (axle_square, or hs_axle_square for the "
               "high-strength bore), and AXLE_ALONG_Y/CENTRE from the mesh", "axles.Traction_Wheel_4in"),
     "spacer": ("One _AxlePart subclass each (WIDTH from the name); high-strength ones use an hs_axle_square KIND",

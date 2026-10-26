@@ -1,8 +1,13 @@
 """A wheeled chassis with a plate deck carrying the V5 brain, radio and battery."""
 from pathlib import Path
 
-from solidpython4vex.electronics import Plate_5x25_Steel, V5_Battery, V5_Robot_Brain, V5_Robot_Radio
-from solidpython4vex.structure import C_Channel_1x2x1x25_Aluminum, ChannelFrame, U_Channel_2x2x2x20_Aluminum
+from solidpython4vex.electronics import V5_Battery, V5_Robot_Brain, V5_Robot_Radio
+from solidpython4vex.structure import (
+    C_Channel_1x2x1x25_Aluminum,
+    ChannelFrame,
+    Plate_5x25_Steel,
+    U_Channel_2x2x2x20_Aluminum,
+)
 
 
 def build_test_robot():

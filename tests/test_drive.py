@@ -1,4 +1,9 @@
-from solidpython4vex.drive import Disc
+from solidpython4vex.motion import Disc
+from solidpython4vex.drive import Disc as LegacyDisc
+
+
+def test_drive_module_remains_a_compatibility_import():
+    assert LegacyDisc is Disc
 from solidpython4vex.structure import C_Channel
 
 
@@ -29,7 +34,7 @@ def test_gear_attaches_to_channel_and_bom_has_both():
 
 def test_every_disc_has_one_axle_hole_that_takes_a_shaft():
     from solidpython4vex.axles import HS_Shaft, Shaft
-    from solidpython4vex.drive import disc_names
+    from solidpython4vex.motion import disc_names
 
     for name in disc_names():
         disc = Disc(name)

@@ -1,41 +1,12 @@
-"""Flat mounting plate and V5 electronics (brain, radio, battery clip with battery)."""
+"""V5 electronics: brain, radio, and battery clip with battery."""
 from itertools import product
 
-from solid2 import cube, multmatrix
+from solid2 import multmatrix
 
 from .assembly import VEXAssembly
 from .holes import Face, Hole, PITCH, UNIT, mat_vec
 from .joints import _rotation_about, attach
-from .parts import part, part_info, tint
-
-
-class Plate_5x25_Steel(VEXAssembly):
-    """5x25 steel plate (275-1140): 25 holes long (x), 5 wide (z), 1.2 mm thick (y in [0, T]).
-
-    Holes sit at odd (u, v) on both faces: "plate_top" (normal +y) and "plate_bottom" (normal -y).
-    The same physical hole is (u, v) on the top face and (u, 10 - v) on the bottom face.
-    """
-
-    T = 1.2
-    NAME = "275_1140_5x25_Steel_Plate"
-    LENGTH_HOLES, WIDTH_HOLES = 25, 5
-
-    def __init__(self):
-        self.info = part_info(self.NAME)
-        length, width = self.LENGTH_HOLES * 2 * UNIT, self.WIDTH_HOLES * 2 * UNIT
-        self.length, self.width = length, width
-        x0, z0 = -length / 2, -width / 2
-        top = Face("plate_top", (x0, self.T / 2, z0), (1, 0, 0), (0, 0, 1), (0, 1, 0), self.T)
-        bottom = Face("plate_bottom", (x0, self.T / 2, -z0), (1, 0, 0), (0, 0, -1), (0, -1, 0), self.T)
-        self.faces = {"plate_top": top, "plate_bottom": bottom}
-        self.mount_faces = {"plate_top": (2 * self.LENGTH_HOLES, self.WIDTH_HOLES)}
-        us = range(1, 2 * self.LENGTH_HOLES, 2)
-        vs = range(1, 2 * self.WIDTH_HOLES, 2)
-        self.holes = [Hole(f, u, v) for f in (top, bottom) for u in us for v in vs]
-        body = cube([length, self.T, width]).translate(x0, 0, z0)
-        for h in self.holes[: len(us) * len(vs)]:
-            body -= h.cutter(depth=self.T * 3)
-        self.shape = tint(body, self.info)
+from .parts import part, part_info
 
 
 class V5_Robot_Brain(VEXAssembly):

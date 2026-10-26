@@ -56,8 +56,26 @@ def test_dead_wheel_on_a_single_channel_needs_an_outboard_or_inboard_side():
         U_Channel_2x2x2x20_Aluminum().dead_wheel(side="front")
 
 
+def test_dead_wheel_side_is_relative_to_the_selected_rail():
+    from solidpython4vex.structure import U_Channel_2x2x2x20_Aluminum
+
+    channel = U_Channel_2x2x2x20_Aluminum()
+    outboard, = [h for h in channel.dead_wheel(side="outboard").holes if h.kind == "axle_square"]
+    inboard, = [h for h in channel.dead_wheel(side="inboard").holes if h.kind == "axle_square"]
+    assert outboard.position[2] > 0
+    assert inboard.position[2] < 0
+
+
+def test_laid_flat_frame_uses_rail_and_inboard_outboard_separately():
+    chassis = build_test_chassis()
+    outboard, = [h for h in chassis.dead_wheel(rail="right", side="outboard").holes if h.kind == "axle_square"]
+    inboard, = [h for h in chassis.dead_wheel(rail="right", side="inboard").holes if h.kind == "axle_square"]
+    assert outboard.position[1] > 306.6
+    assert inboard.position[1] < 278.4
+
+
 def test_dead_wheel_on_a_laid_flat_frame_adds_the_parts():
-    quantities = {part.sku: quantity for part, quantity in build_test_chassis().dead_wheel(side="right").bom()}
+    quantities = {part.sku: quantity for part, quantity in build_test_chassis().dead_wheel(rail="right").bom()}
     assert quantities["228-2500-2226"] == 1
     assert quantities["228-3510"] == 1  # the cap holds the wheel, so only the inboard end needs a collar
     assert quantities["276-1209"] == 2
@@ -72,7 +90,7 @@ def test_dead_wheel_on_a_laid_flat_frame_adds_the_parts():
 
 def test_dead_wheel_blocks_bolt_to_both_flanges_on_the_middle_row():
     plain = build_test_chassis()
-    wheeled = build_test_chassis().dead_wheel(side="right")
+    wheeled = build_test_chassis().dead_wheel(rail="right")
     mounts = {h for h in wheeled.taken - plain.taken if not h.is_axle}
     assert len(mounts) == 8  # per block: two flange holes and two base holes
     flange = {h for h in mounts if h.face.name.startswith("flange")}
@@ -83,7 +101,7 @@ def test_dead_wheel_blocks_bolt_to_both_flanges_on_the_middle_row():
 
 
 def test_dead_wheel_shaft_runs_across_the_rail_with_the_wheel_outboard():
-    wheeled = build_test_chassis().dead_wheel(side="right")
+    wheeled = build_test_chassis().dead_wheel(rail="right")
     axle = sorted((h for h in wheeled.holes if h.is_axle), key=lambda h: h.position[1])
     assert {round(h.position[0], 1) for h in axle} == {101.6}  # one axle line
     assert {round(h.position[2], 1) for h in axle} == {11.6}
@@ -97,7 +115,7 @@ def test_dead_wheel_shaft_runs_across_the_rail_with_the_wheel_outboard():
 
 def test_left_side_dead_wheel_uses_the_other_rail():
     plain = build_test_chassis()
-    wheeled = plain.dead_wheel(side="left")
+    wheeled = plain.dead_wheel(rail="left")
     mounts = {h for h in wheeled.taken - plain.taken if not h.is_axle}
     flange = {h for h in mounts if h.face.name.startswith("flange")}
     assert len(flange) == 4

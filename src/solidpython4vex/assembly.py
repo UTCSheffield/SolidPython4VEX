@@ -53,24 +53,24 @@ class VEXAssembly:
 
         return attach(self, *args, **kwargs)
 
-    def dead_wheel(self, at="rear", side="right", inset=1):
-        """Return this U channel or laid-flat frame with a 4" omni dead wheel on a rail (see drive.py)."""
-        from .drive import place_dead_wheel_near_rear
+    def dead_wheel(self, at="rear", side="outboard", rail=None, inset=1):
+        """Return this U channel or laid-flat frame with a 4" omni dead wheel on a rail (see motion.py)."""
+        from .motion import place_dead_wheel_near_rear
 
         if at != "rear":
             raise ValueError("dead wheels can currently only be placed at the 'rear'")
-        wheeled = place_dead_wheel_near_rear(self, inset=inset, side=side)
+        wheeled = place_dead_wheel_near_rear(self, inset=inset, side=side, rail=rail)
         # keep the channel's size attributes so the result can still go into a ChannelFrame
         for name in ("kind", "w", "h", "hole_count", "length", "outer_width", "flange_len"):
             if hasattr(self, name):
                 setattr(wheeled, name, getattr(self, name))
         return wheeled
 
-    def motor_wheel(self, at="front", side="outboard", motor_gearing="blue", inset=0):
-        """Return this U channel or laid-flat frame with a motor-driven 4" wheel on a rail (see drive.py)."""
-        from .drive import place_motor_wheel
+    def motor_wheel(self, at="front", side="outboard", rail=None, motor_gearing="blue", inset=0):
+        """Return this U channel or laid-flat frame with a motor-driven 4" wheel on a rail (see motion.py)."""
+        from .motion import place_motor_wheel
 
-        wheeled = place_motor_wheel(self, at=at, side=side, motor_gearing=motor_gearing, inset=inset)
+        wheeled = place_motor_wheel(self, at=at, side=side, rail=rail, motor_gearing=motor_gearing, inset=inset)
         for name in ("kind", "w", "h", "hole_count", "length", "outer_width", "flange_len"):
             if hasattr(self, name):
                 setattr(wheeled, name, getattr(self, name))
