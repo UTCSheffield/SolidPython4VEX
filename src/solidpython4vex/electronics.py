@@ -87,7 +87,7 @@ def placed(assembly, part_, *, x=0, y=0, z=0, up_axis="y", along_y=False):
     if along_y:
         rot = [[-rot[1][j] for j in range(3)], list(rot[0]), list(rot[2])]
     moved = multmatrix([[*rot[i], t] for i, t in enumerate((x, y, z))] + [[0, 0, 0, 1]])(part_.shape)
-    out = VEXAssembly()
+    out = assembly._like()
     out.shape = assembly.shape + moved
     out.holes = list(assembly.holes)
     out.taken = set(assembly.taken)

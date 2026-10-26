@@ -54,31 +54,20 @@ class VEXAssembly:
         return attach(self, *args, **kwargs)
 
     def dead_wheel(self, at="rear", side="outboard", rail=None, inset=1):
-        """Return this U channel or laid-flat frame with a 4" omni dead wheel on a rail (see motion.py)."""
-        from .motion import place_dead_wheel_near_rear
-
-        if at != "rear":
-            raise ValueError("dead wheels can currently only be placed at the 'rear'")
-        wheeled = place_dead_wheel_near_rear(self, inset=inset, side=side, rail=rail)
-        # keep the channel's size attributes so the result can still go into a ChannelFrame
-        for name in ("kind", "w", "h", "hole_count", "length", "outer_width", "flange_len"):
-            if hasattr(self, name):
-                setattr(wheeled, name, getattr(self, name))
-        return wheeled
+        """Return this assembly with a dead wheel fitted; override per structure shape."""
+        raise NotImplementedError(f"{type(self).__name__} does not support dead_wheel() yet")
 
     def motor_wheel(self, at="front", side="outboard", rail=None, motor_gearing="blue", inset=0):
-        """Return this U channel or laid-flat frame with a motor-driven 4" wheel on a rail (see motion.py)."""
-        from .motion import place_motor_wheel
+        """Return this assembly with a motor-driven wheel fitted; override per structure shape."""
+        raise NotImplementedError(f"{type(self).__name__} does not support motor_wheel() yet")
 
-        wheeled = place_motor_wheel(self, at=at, side=side, rail=rail, motor_gearing=motor_gearing, inset=inset)
-        for name in ("kind", "w", "h", "hole_count", "length", "outer_width", "flange_len"):
-            if hasattr(self, name):
-                setattr(wheeled, name, getattr(self, name))
-        return wheeled
+    def _like(self):
+        """A blank assembly that keeps this one's wheel-mounting ability through transforms."""
+        return _RailAssembly() if isinstance(self, RailWheels) else VEXAssembly()
 
     def add(self, other):
         """Return a new assembly containing this assembly and `other`."""
-        combined = VEXAssembly()
+        combined = self._like()
         combined.shape = self.shape + other.shape
         combined.holes = list(self.holes) + list(other.holes)
         combined.taken = set(self.taken) | set(other.taken)
@@ -100,7 +89,7 @@ class VEXAssembly:
             [[*reflection[i], offset[i]] for i in range(3)] + [[0, 0, 0, 1]]
         )(self.shape)
 
-        mirrored = VEXAssembly()
+        mirrored = self._like()
         mirrored.shape = transform
         mirrored.holes = [hole.transformed(reflection, offset) for hole in self.holes]
         mirrored.taken = {hole.transformed(reflection, offset) for hole in self.taken}
@@ -112,7 +101,7 @@ class VEXAssembly:
 
         offset = (x, y, z)
         identity = ((1, 0, 0), (0, 1, 0), (0, 0, 1))
-        moved = VEXAssembly()
+        moved = self._like()
         moved.shape = multmatrix(
             [[*identity[i], offset[i]] for i in range(3)] + [[0, 0, 0, 1]]
         )(self.shape)
@@ -138,7 +127,7 @@ class VEXAssembly:
         rotation = rotations[axis]
         rotated_origin = mat_vec(rotation, around)
         offset = tuple(a - b for a, b in zip(around, rotated_origin))
-        moved = VEXAssembly()
+        moved = self._like()
         moved.shape = multmatrix(
             [[*rotation[i], offset[i]] for i in range(3)] + [[0, 0, 0, 1]]
         )(self.shape)
@@ -177,3 +166,34 @@ class VEXAssembly:
             total = "" if p.price is None else f"{p.price * q:.2f}"
             rows.append(f"{p.sku},{p.name},{q},{unit},{total}")
         return "\n".join(rows)
+
+
+class RailWheels:
+    """Mixin for U channels and laid-flat channel frames that can carry wheels on a rail (see motion.py)."""
+
+    def dead_wheel(self, at="rear", side="outboard", rail=None, inset=1):
+        """Return this U channel or laid-flat frame with a 4" omni dead wheel on a rail (see motion.py)."""
+        from .motion import place_dead_wheel_near_rear
+
+        if at != "rear":
+            raise ValueError("dead wheels can currently only be placed at the 'rear'")
+        wheeled = place_dead_wheel_near_rear(self, inset=inset, side=side, rail=rail)
+        # keep the channel's size attributes so the result can still go into a ChannelFrame
+        for name in ("kind", "w", "h", "hole_count", "length", "outer_width", "flange_len"):
+            if hasattr(self, name):
+                setattr(wheeled, name, getattr(self, name))
+        return wheeled
+
+    def motor_wheel(self, at="front", side="outboard", rail=None, motor_gearing="blue", inset=0):
+        """Return this U channel or laid-flat frame with a motor-driven 4" wheel on a rail (see motion.py)."""
+        from .motion import place_motor_wheel
+
+        wheeled = place_motor_wheel(self, at=at, side=side, rail=rail, motor_gearing=motor_gearing, inset=inset)
+        for name in ("kind", "w", "h", "hole_count", "length", "outer_width", "flange_len"):
+            if hasattr(self, name):
+                setattr(wheeled, name, getattr(self, name))
+        return wheeled
+
+
+class _RailAssembly(RailWheels, VEXAssembly):
+    """Result of transforming or joining a RailWheels assembly."""

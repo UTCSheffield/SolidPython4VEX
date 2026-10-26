@@ -182,7 +182,7 @@ def attach(a, hole_a, b, hole_b, *, also=(), side="outer", roll=0, nut="nylock",
     shape = parts[0]
     for p in parts[1:]:
         shape = shape + p
-    out = VEXAssembly()
+    out = a._like()
     out.shape = shape
     out.holes = list(a.holes) + [h.transformed(R, t) for h in b.holes]
     used = {ha for ha, _ in pairs} | {moved[hb] for _, hb in pairs}

@@ -1,6 +1,6 @@
 from solid2 import cube
 
-from .assembly import VEXAssembly
+from .assembly import RailWheels, VEXAssembly
 from .holes import Face, Hole, row, staggered_row, PITCH, UNIT
 from .parts import part_info, tint
 
@@ -69,7 +69,7 @@ class Angle(VEXAssembly):
         self.shape = tint(self.shape, self.info)
 
 
-class Channel(VEXAssembly):
+class Channel(RailWheels, VEXAssembly):
     """C or U channel. Frame: x along the length (centred), web in y in [0, T] (outer face +y),
     flanges at z = +-outer_width/2 extending toward -y.
 
@@ -189,7 +189,7 @@ class U_Channel_2x2x2x20_Aluminum(_CatalogChannel):
     part_name = "276_7285_U_Channel_2x2x2x20"
 
 
-class ChannelFrame(VEXAssembly):
+class ChannelFrame(RailWheels, VEXAssembly):
     """A pair of side rails to which front/rear C-channel crosspieces can be attached."""
 
     def __init__(self, left, right=None):
