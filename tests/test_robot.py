@@ -8,7 +8,7 @@ from solidpython4vex.structure import Plate_5x25_Steel
 
 
 def _robot():
-    path = Path(__file__).resolve().parents[1] / "examples" / "test_robot.py"
+    path = Path(__file__).resolve().parents[1] / "examples" / "robot.py"
     spec = importlib.util.spec_from_file_location("example_test_robot", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

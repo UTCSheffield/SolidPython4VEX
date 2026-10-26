@@ -6,7 +6,7 @@ from solidpython4vex.coverage import axle_parts
 
 
 def test_long_axle_example_carries_every_built_axle_part():
-    path = Path(__file__).resolve().parents[1] / "examples" / "test_axles.py"
+    path = Path(__file__).resolve().parents[1] / "examples" / "axles.py"
     spec = importlib.util.spec_from_file_location("example_test_axles", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

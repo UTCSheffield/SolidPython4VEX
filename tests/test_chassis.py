@@ -2,7 +2,7 @@ import pytest
 
 from pathlib import Path
 
-from examples.test_chassis import build_test_chassis, build_test_wheeled_chassis
+from examples.chassis import build_test_chassis, build_test_wheeled_chassis
 
 
 def test_render_writes_relative_retainers_import_paths(tmp_path):
