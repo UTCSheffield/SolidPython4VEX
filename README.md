@@ -94,3 +94,17 @@ python scripts/step_to_stl.py <step_dir> src/solidpython4vex/parts/stl
 ## Robot test
 
 `examples/test_robot.py` builds the wheeled chassis and adds a 5x25 steel plate across the rails, the V5 brain (its inner four holes, 1/4" screws from under the plate into the blind pockets, via `attach(..., pocket=6.0)`), a battery clip carrying the battery, and the radio, and writes `build/test_robot.scad`. The radio is only positioned (its mounting holes are not modelled), and the battery is drawn in the clip's own coordinates, so check both in a render.
+
+## For development on Nixos
+
+This works if you use a .venv.
+cd into the repo/folder, then.
+
+```python -m venv .venv
+source .venv/bin/activate
+pip install -e .
+
+```
+A new vscode extension should pick it up
+
+
